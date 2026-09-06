@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Tienda JR</title>
     <style>
-        /* Estilos de la Barra de Anuncios Superior */
         .banner-superior {
             background-color: #007bff;
             color: white;
@@ -28,15 +27,20 @@
         body { font-family: Arial, sans-serif; margin: 0; padding: 20px 20px 0 20px; background-color: #f4f4f9; display: flex; flex-direction: column; min-height: 95vh; box-sizing: border-box; }
         header { display: flex; justify-content: space-between; align-items: center; background: #333; color: white; padding: 10px 20px; border-radius: 5px; }
         main { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; flex: 1; }
-        .productos { display: flex; gap: 15px; flex-wrap: wrap; flex: 2; }
         
-        /* Efecto Hover y transición suave en las tarjetas de productos */
+        .productos { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px; 
+            flex: 2; 
+            align-content: start;
+        }
+        
         .producto { 
             background: white; 
             padding: 12px; 
             border-radius: 6px; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-            width: 160px; 
             text-align: center; 
             display: flex; 
             flex-direction: column; 
@@ -49,13 +53,11 @@
             box-shadow: 0 8px 15px rgba(0,0,0,0.15);
         }
 
-        /* Estilo destacado para Tarjetas en Oferta */
         .producto.oferta {
             border: 2px solid #ff4757;
             background: linear-gradient(to bottom, #fff9f9 0%, #ffffff 100%);
         }
 
-        /* Estilo para las etiquetas de stock y ofertas */
         .etiqueta-stock {
             font-size: 11px;
             font-weight: bold;
@@ -71,7 +73,6 @@
 
         .producto img { width: 100%; height: 110px; object-fit: cover; border-radius: 4px; margin-bottom: 8px; }
         
-        /* Precios */
         .precio-container { margin: 5px 0; }
         .precio-original { font-size: 12px; color: #999; text-decoration: line-through; margin-right: 5px; }
         .precio-actual { font-size: 15px; font-weight: bold; color: #333; }
@@ -92,13 +93,18 @@
 
         @media (max-width: 768px) {
             main { flex-direction: column; }
-            .productos { justify-content: center; width: 100%; }
-            .producto { width: 100%; max-width: 250px; }
+            .productos { justify-content: center; width: 100%; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
             .carrito-container { width: 100%; box-sizing: border-box; }
             .banner-superior { font-size: 11px; gap: 15px; }
         }
 
-        .barra-superior-catalogo { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; width: 100%; }
+        .barra-superior-catalogo { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; width: 100%; grid-column: 1 / -1; }
+        .fila-filtros-principales { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%; }
+        
+        /* Contenedor de subcategorías oculto por defecto */
+        .fila-subcategorias { display: none; gap: 8px; flex-wrap: wrap; padding-left: 5px; border-left: 3px solid #007bff; margin-top: 5px; }
+        .fila-subcategorias.activo { display: flex; }
+
         .categorias-filtro { display: flex; gap: 8px; flex-wrap: wrap; }
         .filtro-btn { background: #6c757d; padding: 6px 12px; font-size: 13px; margin-top: 0; }
         .filtro-btn.activo { background: #007bff; }
@@ -106,16 +112,14 @@
         .filtro-btn.btn-oferta-filtro { background: #ff4757; }
         .filtro-btn.btn-oferta-filtro:hover { background: #e84118; }
         
-        /* Estilo del buscador */
         .buscador-input { padding: 7px 12px; font-size: 13px; border: 1px solid #ccc; border-radius: 4px; width: 200px; outline: none; }
         .buscador-input:focus { border-color: #007bff; box-shadow: 0 0 5px rgba(0,123,255,0.3); }
 
         @media (max-width: 600px) {
-            .barra-superior-catalogo { flex-direction: column; align-items: stretch; }
+            .fila-filtros-principales { flex-direction: column; align-items: stretch; }
             .buscador-input { width: 100%; box-sizing: border-box; }
         }
 
-        /* Estilos del Modal de Confirmación */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -160,7 +164,6 @@
         .btn-cerrar-modal { background: #6c757d; flex: 1; }
         .btn-cerrar-modal:hover { background: #5a6268; }
 
-        /* Estilos del Footer Profesional */
         footer {
             background-color: #222;
             color: #ccc;
@@ -210,7 +213,6 @@
 </head>
 <body>
 
-    <!-- Barra de Anuncios / Banner de Confianza -->
     <div class="banner-superior">
         <div class="banner-item">🚚 Envíos rápidos y seguros</div>
         <div class="banner-item">🔒 Pagos 100% confiables</div>
@@ -223,120 +225,169 @@
     </header>
 
     <main>
-        <section class="productos" style="flex-direction: column;">
-            <!-- Barra superior con Filtros de Categoría y Buscador -->
+        <section class="productos">
             <div class="barra-superior-catalogo">
-                <div class="categorias-filtro">
-                    <button class="filtro-btn activo" data-categoria="todos">Todos</button>
-                    <button class="filtro-btn btn-oferta-filtro" data-categoria="ofertas">🔥 Ofertas</button>
-                    <button class="filtro-btn" data-categoria="ropa">Ropa</button>
-                    <button class="filtro-btn" data-categoria="calzado">Calzado</button>
-                    <button class="filtro-btn" data-categoria="accesorios">Accesorios</button>
-                    <button class="filtro-btn" data-categoria="flores">Flores</button>
+                <!-- Fila de Categorías Principales -->
+                <div class="fila-filtros-principales">
+                    <div class="categorias-filtro">
+                        <button class="filtro-btn activo" data-categoria="todos">Todos</button>
+                        <button class="filtro-btn btn-oferta-filtro" data-categoria="ofertas">🔥 Ofertas</button>
+                        <button class="filtro-btn" data-categoria="ropa">Ropa</button>
+                        <button class="filtro-btn" data-categoria="calzado">Calzado</button>
+                        <button class="filtro-btn" data-categoria="accesorios">Accesorios</button>
+                        <button class="filtro-btn" data-categoria="flores">Flores</button>
+                        <button class="filtro-btn" data-categoria="perfumes">Perfumes</button>
+                    </div>
+                    <div>
+                        <input type="text" id="buscador" class="buscador-input" placeholder="🔍 Buscar producto...">
+                    </div>
                 </div>
+
+                <!-- Fila de Subcategorías (Aparece solo al hacer clic en Perfumes) -->
+                <div id="contenedor-subcategorias" class="fila-subcategorias">
+                    <span style="font-size: 13px; font-weight: bold; align-self: center; color: #555;">Tipo de Perfume:</span>
+                    <button class="filtro-btn subfiltro-btn activo-sub" data-subcategoria="todos-sub">Todos los perfumes</button>
+                    <button class="filtro-btn subfiltro-btn" data-subcategoria="elegante">Elegantes</button>
+                    <button class="filtro-btn subfiltro-btn" data-subcategoria="citrico">Cítricos</button>
+                    <button class="filtro-btn subfiltro-btn" data-subcategoria="amaderado">Amaderados</button>
+                </div>
+            </div>
+
+            <!-- PRODUCTO 1 -->
+            <div class="producto oferta" data-id="1" data-nombre="Camiseta en Oferta" data-precio="10.00" data-categoria="ofertas" data-stock="5">
                 <div>
-                    <input type="text" id="buscador" class="buscador-input" placeholder="🔍 Buscar producto...">
+                    <span class="etiqueta-stock etiqueta-oferta">🔥 33% DESC</span>
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300" alt="Camiseta">
+                    <h3>Camiseta</h3>
+                    <div class="precio-container">
+                        <span class="precio-original">$15.00</span>
+                        <span class="precio-actual">$10.00</span>
+                    </div>
                 </div>
+                <button class="agregar-carrito">Agregar</button>
             </div>
 
-            <div style="display: flex; gap: 15px; flex-wrap: wrap; width: 100%;" id="contenedor-productos">
-                <!-- PRODUCTO 1: CAMISETA EN OFERTA -->
-                <div class="producto oferta" data-id="1" data-nombre="Camiseta en Oferta" data-precio="10.00" data-categoria="ofertas" data-stock="5">
-                    <div>
-                        <span class="etiqueta-stock etiqueta-oferta">🔥 33% DESC</span>
-                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300" alt="Camiseta">
-                        <h3>Camiseta</h3>
-                        <div class="precio-container">
-                            <span class="precio-original">$15.00</span>
-                            <span class="precio-actual">$10.00</span>
-                        </div>
+            <!-- PRODUCTO 2 -->
+            <div class="producto" data-id="2" data-nombre="Pantalón" data-precio="30.00" data-categoria="ropa" data-stock="3">
+                <div>
+                    <span class="etiqueta-stock stock-limitado">🔥 ¡Últimas unidades! (3)</span>
+                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300" alt="Pantalón">
+                    <h3>Pantalón</h3>
+                    <div class="precio-container">
+                        <span class="precio-actual">$30.00</span>
                     </div>
-                    <button class="agregar-carrito">Agregar</button>
                 </div>
-
-                <!-- PRODUCTO 2: PANTALÓN -->
-                <div class="producto" data-id="2" data-nombre="Pantalón" data-precio="30.00" data-categoria="ropa" data-stock="3">
-                    <div>
-                        <span class="etiqueta-stock stock-limitado">🔥 ¡Últimas unidades! (3)</span>
-                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300" alt="Pantalón">
-                        <h3>Pantalón</h3>
-                        <div class="precio-container">
-                            <span class="precio-actual">$30.00</span>
-                        </div>
-                    </div>
-                    <button class="agregar-carrito">Agregar</button>
-                </div>
-
-                <!-- PRODUCTO 3: ZAPATOS EN OFERTA -->
-                <div class="producto oferta" data-id="3" data-nombre="Zapatos Deportivos Oferta" data-precio="35.00" data-categoria="ofertas" data-stock="4">
-                    <div>
-                        <span class="etiqueta-stock etiqueta-oferta">⚡ SUPER OFERTA</span>
-                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300" alt="Zapatos">
-                        <h3>Zapatos</h3>
-                        <div class="precio-container">
-                            <span class="precio-original">$45.00</span>
-                            <span class="precio-actual">$35.00</span>
-                        </div>
-                    </div>
-                    <button class="agregar-carrito">Agregar</button>
-                </div>
-
-                <!-- PRODUCTO 4: GORRA -->
-                <div class="producto" data-id="4" data-nombre="Gorra" data-precio="10.00" data-categoria="accesorios" data-stock="3">
-                    <div>
-                        <span class="etiqueta-stock stock-limitado">🔥 ¡Últimas unidades! (3)</span>
-                        <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=300" alt="Gorra">
-                        <h3>Gorra</h3>
-                        <div class="precio-container">
-                            <span class="precio-actual">$10.00</span>
-                        </div>
-                    </div>
-                    <button class="agregar-carrito">Agregar</button>
-                </div>
-
-                <!-- PRODUCTO 5: RAMO DE ROSAS -->
-                <div class="producto" data-id="5" data-nombre="Ramo de Rosas" data-precio="25.00" data-categoria="flores" data-stock="4">
-                    <div>
-                        <span class="etiqueta-stock stock-disponible">🟢 Disponible hoy (4)</span>
-                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300" alt="Ramo de Rosas">
-                        <h3>Ramo de Rosas</h3>
-                        <div class="precio-container">
-                            <span class="precio-actual">$25.00</span>
-                        </div>
-                    </div>
-                    <button class="agregar-carrito">Agregar</button>
-                </div>
-
-                <!-- PRODUCTO 6: GIRASOLES EN OFERTA -->
-                <div class="producto oferta" data-id="6" data-nombre="Girasoles en Oferta" data-precio="15.00" data-categoria="ofertas" data-stock="5">
-                    <div>
-                        <span class="etiqueta-stock etiqueta-oferta">🏷️ PROMO ESPECIAL</span>
-                        <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=300" alt="Girasoles">
-                        <h3>Girasoles</h3>
-                        <div class="precio-container">
-                            <span class="precio-original">$20.00</span>
-                            <span class="precio-actual">$15.00</span>
-                        </div>
-                    </div>
-                    <button class="agregar-carrito">Agregar</button>
-                </div>
-
-                <!-- PRODUCTO 7: CAJA DE ROSAS Y CHOCOLATES -->
-                <div class="producto" data-id="7" data-nombre="Caja de Rosas y Chocolates" data-precio="40.00" data-categoria="flores" data-stock="2">
-                    <div>
-                        <span class="etiqueta-stock stock-limitado">🔥 ¡Alta demanda! (2)</span>
-                        <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300" alt="Caja Rosas/Choc">
-                        <h3>Caja Rosas/Choc</h3>
-                        <div class="precio-container">
-                            <span class="precio-actual">$40.00</span>
-                        </div>
-                    </div>
-                    <button class="agregar-carrito">Agregar</button>
-                </div>
+                <button class="agregar-carrito">Agregar</button>
             </div>
+
+            <!-- PRODUCTO 3 -->
+            <div class="producto oferta" data-id="3" data-nombre="Zapatos Deportivos Oferta" data-precio="35.00" data-categoria="ofertas" data-stock="4">
+                <div>
+                    <span class="etiqueta-stock etiqueta-oferta">⚡ SUPER OFERTA</span>
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300" alt="Zapatos">
+                    <h3>Zapatos</h3>
+                    <div class="precio-container">
+                        <span class="precio-original">$45.00</span>
+                        <span class="precio-actual">$35.00</span>
+                    </div>
+                </div>
+                <button class="agregar-carrito">Agregar</button>
+            </div>
+
+            <!-- PRODUCTO 4 -->
+            <div class="producto" data-id="4" data-nombre="Gorra" data-precio="10.00" data-categoria="accesorios" data-stock="3">
+                <div>
+                    <span class="etiqueta-stock stock-limitado">🔥 ¡Últimas unidades! (3)</span>
+                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=300" alt="Gorra">
+                    <h3>Gorra</h3>
+                    <div class="precio-container">
+                        <span class="precio-actual">$10.00</span>
+                    </div>
+                </div>
+                <button class="agregar-carrito">Agregar</button>
+            </div>
+
+            <!-- PRODUCTO 5 -->
+            <div class="producto" data-id="5" data-nombre="Ramo de Rosas" data-precio="25.00" data-categoria="flores" data-stock="4">
+                <div>
+                    <span class="etiqueta-stock stock-disponible">🟢 Disponible hoy (4)</span>
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300" alt="Ramo de Rosas">
+                    <h3>Ramo de Rosas</h3>
+                    <div class="precio-container">
+                        <span class="precio-actual">$25.00</span>
+                    </div>
+                </div>
+                <button class="agregar-carrito">Agregar</button>
+            </div>
+
+            <!-- PRODUCTO 6 -->
+            <div class="producto oferta" data-id="6" data-nombre="Girasoles en Oferta" data-precio="15.00" data-categoria="ofertas" data-stock="5">
+                <div>
+                    <span class="etiqueta-stock etiqueta-oferta">🏷️ PROMO ESPECIAL</span>
+                    <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=300" alt="Girasoles">
+                    <h3>Girasoles</h3>
+                    <div class="precio-container">
+                        <span class="precio-original">$20.00</span>
+                        <span class="precio-actual">$15.00</span>
+                    </div>
+                </div>
+                <button class="agregar-carrito">Agregar</button>
+            </div>
+
+            <!-- PRODUCTO 7 -->
+            <div class="producto" data-id="7" data-nombre="Caja de Rosas y Chocolates" data-precio="40.00" data-categoria="flores" data-stock="2">
+                <div>
+                    <span class="etiqueta-stock stock-limitado">🔥 ¡Alta demanda! (2)</span>
+                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300" alt="Caja Rosas/Choc">
+                    <h3>Caja Rosas/Choc</h3>
+                    <div class="precio-container">
+                        <span class="precio-actual">$40.00</span>
+                    </div>
+                </div>
+                <button class="agregar-carrito">Agregar</button>
+            </div>
+
+            <!-- PRODUCTO 8: PERFUME ELEGANTE -->
+            <div class="producto" data-id="8" data-nombre="Perfume Elegante" data-precio="25.00" data-categoria="perfumes" data-subcategoria="elegante" data-stock="5">
+                <div>
+                    <span class="etiqueta-stock stock-disponible">🟢 Disponible (5)</span>
+                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=300" alt="Perfume Elegante">
+                    <h3>Perfume Elegante</h3>
+                    <div class="precio-container">
+                        <span class="precio-actual">$25.00</span>
+                    </div>
+                </div>
+                <button class="agregar-carrito">Agregar</button>
+            </div>
+
+            <!-- PRODUCTO 9: PERFUME CÍTRICO -->
+            <div class="producto" data-id="9" data-nombre="Perfume Cítrico Fresco" data-precio="28.00" data-categoria="perfumes" data-subcategoria="citrico" data-stock="4">
+                <div>
+                    <span class="etiqueta-stock stock-disponible">🟢 Disponible (4)</span>
+                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=300" alt="Perfume Cítrico">
+                    <h3>Perfume Cítrico</h3>
+                    <div class="precio-container">
+                        <span class="precio-actual">$28.00</span>
+                    </div>
+                </div>
+                <button class="agregar-carrito">Agregar</button>
+            </div> 
+
+            <!-- PRODUCTO 10: PERFUME AMADERADO -->
+            <div class="producto" data-id="10" data-nombre="Perfume Amaderado Intenso" data-precio="32.00" data-categoria="perfumes" data-subcategoria="amaderado" data-stock="3">
+                <div>
+                    <span class="etiqueta-stock stock-limitado">🔥 ¡Últimas unidades! (3)</span>
+                    <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?w=300" alt="Perfume Amaderado">
+                    <h3>Perfume Amaderado</h3>
+                    <div class="precio-container">
+                        <span class="precio-actual">$32.00</span>
+                    </div>
+                </div>
+                <button class="agregar-carrito">Agregar</button>
+            </div>
+            
         </section>
 
-        <!-- Resumen del Carrito -->
         <aside class="carrito-container">
             <h2>Tu Carrito</h2>
             <ul id="lista-carrito"></ul>
@@ -371,7 +422,6 @@
         </aside>
     </main>
 
-    <!-- Modal / Ventana Emergente de Confirmación -->
     <div id="modal-confirmacion" class="modal-overlay">
         <div class="modal-content">
             <h3>¡Resumen de tu Pedido! 🛒</h3>
@@ -384,7 +434,6 @@
         </div>
     </div>
 
-    <!-- Pie de Página Profesional -->
     <footer>
         <div class="footer-container">
             <div class="footer-section">
@@ -416,6 +465,7 @@
     const botonVaciar = document.getElementById('vaciar-carrito');
     const botonFinalizar = document.getElementById('finalizar-compra');
     const inputBuscador = document.getElementById('buscador');
+    const contenedorSubcategorias = document.getElementById('contenedor-subcategorias');
     
     const modalConfirmacion = document.getElementById('modal-confirmacion');
     const contenidoModalResumen = document.getElementById('contenido-modal-resumen');
@@ -496,6 +546,14 @@
         document.getElementById('direccion-cliente').value = '';
         document.getElementById('metodo-pago').selectedIndex = 0;
         inputBuscador.value = '';
+        
+        // Resetear filtros a "todos"
+        document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
+        document.querySelector('[data-categoria="todos"]').classList.add('activo');
+        document.querySelectorAll('.subfiltro-btn').forEach(b => b.classList.remove('activo-sub'));
+        document.querySelector('[data-subcategoria="todos-sub"]').classList.add('activo-sub');
+        contenedorSubcategorias.classList.remove('activo');
+
         filtrarProductos();
         actualizarVistaStockYCarrito();
     });
@@ -619,7 +677,6 @@
                 botonAgregar.textContent = 'Agregar';
                 if (esOferta) {
                     etiqueta.className = 'etiqueta-stock etiqueta-oferta';
-                    // Mantiene un texto personalizado de descuento si hay stock
                 } else if (stockRestante <= 1) {
                     etiqueta.className = 'etiqueta-stock stock-limitado';
                     etiqueta.textContent = '🔥 ¡Última unidad! (1)';
@@ -634,17 +691,29 @@
     function filtrarProductos() {
         const botonActivo = document.querySelector('.filtro-btn.activo');
         const categoria = botonActivo ? botonActivo.getAttribute('data-categoria') : 'todos';
+        
+        const subBotonActivo = document.querySelector('.subfiltro-btn.activo-sub');
+        const subcategoria = subBotonActivo ? subBotonActivo.getAttribute('data-subcategoria') : 'todos-sub';
+
         const textoBusqueda = inputBuscador.value.toLowerCase().trim();
         const productos = document.querySelectorAll('.producto');
 
         productos.forEach(producto => {
             const catProducto = producto.getAttribute('data-categoria');
+            const subCatProducto = producto.getAttribute('data-subcategoria');
             const nombreProducto = producto.getAttribute('data-nombre').toLowerCase();
 
-            const coincideCategoria = (categoria === 'todos' || catProducto === categoria);
+            let coincideCategoria = (categoria === 'todos' || catProducto === categoria);
+            let coincideSubcategoria = true;
+
+            // Si estamos en la categoría perfumes y hay un subfiltro activo
+            if (categoria === 'perfumes' && subcategoria !== 'todos-sub') {
+                coincideSubcategoria = (subCatProducto === subcategoria);
+            }
+
             const coincideBusqueda = nombreProducto.includes(textoBusqueda);
 
-            if (coincideCategoria && coincideBusqueda) {
+            if (coincideCategoria && coincideSubcategoria && coincideBusqueda) {
                 producto.style.display = 'flex';
             } else {
                 producto.style.display = 'none';
@@ -652,11 +721,35 @@
         });
     }
 
-    const botonesFiltro = document.querySelectorAll('.filtro-btn');
+    // Eventos para Categorías Principales
+    const botonesFiltro = document.querySelectorAll('.categorias-filtro .filtro-btn');
     botonesFiltro.forEach(boton => {
         boton.addEventListener('click', (e) => {
             botonesFiltro.forEach(b => b.classList.remove('activo'));
             e.target.classList.add('activo');
+
+            const categoriaSeleccionada = e.target.getAttribute('data-categoria');
+
+            // Mostrar u ocultar subcategorías si seleccionan Perfumes
+            if (categoriaSeleccionada === 'perfumes') {
+                contenedorSubcategorias.classList.add('activo');
+            } else {
+                contenedorSubcategorias.classList.remove('activo');
+                // Resetear subfiltro a "todos" cuando salgan de perfumes
+                document.querySelectorAll('.subfiltro-btn').forEach(b => b.classList.remove('activo-sub'));
+                document.querySelector('[data-subcategoria="todos-sub"]').classList.add('activo-sub');
+            }
+
+            filtrarProductos();
+        });
+    });
+
+    // Eventos para Subcategorías
+    const botonesSubfiltro = document.querySelectorAll('.subfiltro-btn');
+    botonesSubfiltro.forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            botonesSubfiltro.forEach(b => b.classList.remove('activo-sub'));
+            e.target.classList.add('activo-sub');
             filtrarProductos();
         });
     });
