@@ -2,60 +2,123 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Tienda JR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variedades Reyna</title>
     <style>
         .banner-superior {
-            background-color: #007bff;
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
             color: white;
-            text-align: center;
-            padding: 8px 15px;
-            font-size: 13px;
-            font-weight: bold;
+            padding: 10px 15px;
             display: flex;
             justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            border-radius: 4px 4px 0 0;
-            margin-bottom: 15px;
-        }
-        .banner-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            gap: 25px;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: var(--radius) var(--radius) 0 0;
+            box-shadow: var(--shadow-sm);
         }
 
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px 20px 0 20px; background-color: #f4f4f9; display: flex; flex-direction: column; min-height: 95vh; box-sizing: border-box; }
-        header { display: flex; justify-content: space-between; align-items: center; background: #333; color: white; padding: 10px 20px; border-radius: 5px; }
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent: #ff4757;
+            --bg-main: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --radius: 10px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+        }
+
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            margin: 0; 
+            padding: 15px; 
+            background-color: #0b0d17;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(255, 0, 128, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(0, 243, 255, 0.18) 0%, transparent 45%),
+                radial-gradient(rgba(0, 243, 255, 0.12) 1.5px, transparent 1.5px);
+            background-size: 100% 100%, 100% 100%, 32px 32px;
+            color: #f1f5f9;
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            box-sizing: border-box; 
+        }
+
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: var(--card-bg); 
+            color: var(--text-main); 
+            padding: 15px 25px; 
+            border-radius: 0 0 var(--radius) var(--radius); 
+            box-shadow: var(--shadow-md);
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        #carrito-icono {
+            background: var(--bg-main);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
         main { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; flex: 1; }
         
         .productos { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px; 
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px; 
             flex: 2; 
             align-content: start;
         }
-        
+
         .producto { 
-            background: white; 
-            padding: 12px; 
-            border-radius: 6px; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            background: var(--card-bg); 
+            padding: 15px; 
+            border-radius: var(--radius); 
+            box-shadow: var(--shadow-sm); 
             text-align: center; 
             display: flex; 
             flex-direction: column; 
             justify-content: space-between; 
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.25s ease;
+            border: 1px solid #e2e8f0;
             position: relative;
-        }
-        .producto:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+            overflow: hidden;
         }
 
-        .producto.oferta {
-            border: 2px solid #ff4757;
-            background: linear-gradient(to bottom, #fff9f9 0%, #ffffff 100%);
+        .producto:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #cbd5e1;
+        }
+
+        .producto img { 
+            width: 100%; 
+            height: 140px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            margin-bottom: 10px; 
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .producto img:hover {
+            opacity: 0.85;
         }
 
         .etiqueta-stock {
@@ -70,15 +133,25 @@
         .stock-limitado { background-color: #fff3cd; color: #856404; }
         .stock-agotado { background-color: #f8d7da; color: #721c24; }
         .etiqueta-oferta { background-color: #ff4757; color: white; }
-
-        .producto img { width: 100%; height: 110px; object-fit: cover; border-radius: 4px; margin-bottom: 8px; }
         
         .precio-container { margin: 5px 0; }
         .precio-original { font-size: 12px; color: #999; text-decoration: line-through; margin-right: 5px; }
         .precio-actual { font-size: 15px; font-weight: bold; color: #333; }
         .producto.oferta .precio-actual { color: #ff4757; }
 
-        .carrito-container { background: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex: 1; min-width: 250px; height: fit-content; }
+        .carrito-container { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 5px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            flex: 1; 
+            min-width: 250px; 
+            height: fit-content; 
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
         button { background: #28a745; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 3px; margin-top: 5px; font-weight: bold; }
         button:hover { background: #218838; }
         button:disabled { background: #cccccc; cursor: not-allowed; }
@@ -91,42 +164,60 @@
         .btn-cantidad { background: #6c757d; padding: 2px 8px; font-size: 12px; margin: 0 4px; }
         .btn-cantidad:hover { background: #5a6268; }
 
-        @media (max-width: 768px) {
-            main { flex-direction: column; }
-            .productos { justify-content: center; width: 100%; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-            .carrito-container { width: 100%; box-sizing: border-box; }
-            .banner-superior { font-size: 11px; gap: 15px; }
-        }
-
         .barra-superior-catalogo { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; width: 100%; grid-column: 1 / -1; }
         .fila-filtros-principales { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%; }
         
-        /* Contenedor de subcategorías oculto por defecto */
         .fila-subcategorias { display: none; gap: 8px; flex-wrap: wrap; padding-left: 5px; border-left: 3px solid #007bff; margin-top: 5px; }
         .fila-subcategorias.activo { display: flex; }
 
-        .categorias-filtro { display: flex; gap: 8px; flex-wrap: wrap; }
-        .filtro-btn { background: #6c757d; padding: 6px 12px; font-size: 13px; margin-top: 0; }
-        .filtro-btn.activo { background: #007bff; }
-        .filtro-btn:hover { background: #5a6268; }
-        .filtro-btn.btn-oferta-filtro { background: #ff4757; }
-        .filtro-btn.btn-oferta-filtro:hover { background: #e84118; }
-        
-        .buscador-input { padding: 7px 12px; font-size: 13px; border: 1px solid #ccc; border-radius: 4px; width: 200px; outline: none; }
-        .buscador-input:focus { border-color: #007bff; box-shadow: 0 0 5px rgba(0,123,255,0.3); }
+        .filtro-btn { 
+            background: #e2e8f0; 
+            color: var(--text-main);
+            padding: 7px 14px; 
+            font-size: 13px; 
+            border-radius: 20px;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: none;
+        }
+        .filtro-btn.activo { background: var(--primary); color: white; }
+        .filtro-btn:hover { background: #cbd5e1; }
+        .filtro-btn.btn-oferta-filtro { background: #fee2e2; color: #dc2626; }
+        .filtro-btn.btn-oferta-filtro:hover { background: #fecaca; }
 
-        @media (max-width: 600px) {
+        .buscador-input { 
+            padding: 9px 15px; 
+            font-size: 14px; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 20px; 
+            width: 240px; 
+            outline: none; 
+            background: var(--card-bg);
+            color: #1e293b;
+        }
+        .buscador-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+
+        @media (max-width: 768px) {
+            body { padding: 8px; }
+            .banner-superior { font-size: 11px; gap: 10px; text-align: center; padding: 8px; }
+            header { padding: 10px 15px; }
+            main { flex-direction: column; gap: 15px; }
+            .productos { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .producto img { height: 110px; }
+            .carrito-container { width: 100%; box-sizing: border-box; position: static; }
             .fila-filtros-principales { flex-direction: column; align-items: stretch; }
             .buscador-input { width: 100%; box-sizing: border-box; }
+        }
+
+        @media (max-width: 480px) {
+            .productos { grid-template-columns: 1fr; } 
         }
 
         .modal-overlay {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.6);
             justify-content: center;
             align-items: center;
@@ -141,6 +232,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             box-sizing: border-box;
             text-align: left;
+            color: #333;
         }
         .modal-content h3 { margin-top: 0; color: #333; }
         .modal-resumen {
@@ -153,23 +245,21 @@
             overflow-y: auto;
             border: 1px solid #ddd;
             margin: 15px 0;
+            color: #333;
         }
-        .modal-botones {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
+        .modal-botones { display: flex; gap: 10px; margin-top: 15px; }
         .btn-whatsapp-modal { background: #25d366; flex: 1; }
         .btn-whatsapp-modal:hover { background: #1ebe5d; }
         .btn-cerrar-modal { background: #6c757d; flex: 1; }
         .btn-cerrar-modal:hover { background: #5a6268; }
 
         footer {
-            background-color: #222;
+            background-color: #11131d;
             color: #ccc;
             margin-top: 40px;
             padding: 30px 20px 20px 20px;
             border-radius: 8px 8px 0 0;
+            border-top: 1px solid rgba(0, 243, 255, 0.2);
         }
         .footer-container {
             display: flex;
@@ -178,37 +268,51 @@
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
-            border-bottom: 1px solid #444;
+            border-bottom: 1px solid #334155;
             padding-bottom: 20px;
         }
-        .footer-section {
-            flex: 1;
-            min-width: 220px;
+        .footer-section { flex: 1; min-width: 220px; }
+        .footer-section h3 { color: white; font-size: 16px; margin-bottom: 10px; }
+        .footer-section p, .footer-section ul { font-size: 14px; line-height: 1.6; }
+        .footer-section ul { list-style: none; padding: 0; }
+        .footer-section ul li { border: none; padding: 3px 0; color: #bbb; }
+        .footer-bottom { text-align: center; font-size: 13px; color: #888; margin-top: 20px; }
+
+        .producto h3 { color: #1e293b; }
+        .carrito-container h2, 
+        .carrito-container label, 
+        .carrito-container p { color: #1e293b; }
+        #lista-carrito li span { color: #1e293b; }
+
+        @keyframes reboteCarrito {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.18); background-color: #dbeafe; border-color: #2563eb; }
+            100% { transform: scale(1); }
         }
-        .footer-section h3 {
-            color: white;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .footer-section p, .footer-section ul {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-        .footer-section ul li {
+        .animar-carrito { animation: reboteCarrito 0.4s ease; }
+        
+        .btn-favorito {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
             border: none;
-            padding: 3px 0;
-            color: #bbb;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+            z-index: 10;
+            transition: transform 0.2s ease;
+            margin-top: 0;
+            color: #ff4757;
         }
-        .footer-bottom {
-            text-align: center;
-            font-size: 13px;
-            color: #888;
-            margin-top: 20px;
-        }
+        .btn-favorito:hover { transform: scale(1.15); background: #ffffff; }
+        .btn-favorito.activo { background: #ffe4e6; color: #ff4757; }
     </style>
 </head>
 <body>
@@ -220,18 +324,18 @@
     </div>
 
     <header>
-        <h1>Tienda JR</h1>
+        <h1>Variedades Reyna</h1>
         <div id="carrito-icono">🛒 Carrito: <span id="contador-carrito">0</span></div>
     </header>
 
     <main>
         <section class="productos">
             <div class="barra-superior-catalogo">
-                <!-- Fila de Categorías Principales -->
                 <div class="fila-filtros-principales">
                     <div class="categorias-filtro">
                         <button class="filtro-btn activo" data-categoria="todos">Todos</button>
                         <button class="filtro-btn btn-oferta-filtro" data-categoria="ofertas">🔥 Ofertas</button>
+                        <button class="filtro-btn" data-categoria="favoritos">❤️ Favoritos</button>
                         <button class="filtro-btn" data-categoria="ropa">Ropa</button>
                         <button class="filtro-btn" data-categoria="calzado">Calzado</button>
                         <button class="filtro-btn" data-categoria="accesorios">Accesorios</button>
@@ -243,7 +347,6 @@
                     </div>
                 </div>
 
-                <!-- Fila de Subcategorías (Aparece solo al hacer clic en Perfumes) -->
                 <div id="contenedor-subcategorias" class="fila-subcategorias">
                     <span style="font-size: 13px; font-weight: bold; align-self: center; color: #555;">Tipo de Perfume:</span>
                     <button class="filtro-btn subfiltro-btn activo-sub" data-subcategoria="todos-sub">Todos los perfumes</button>
@@ -253,11 +356,12 @@
                 </div>
             </div>
 
-            <!-- PRODUCTO 1 -->
-            <div class="producto oferta" data-id="1" data-nombre="Camiseta en Oferta" data-precio="10.00" data-categoria="ofertas" data-stock="5">
+            <!-- PRODUCTOS -->
+            <div class="producto oferta" data-id="1" data-nombre="Camiseta en Oferta" data-precio="10.00" data-categoria="ropa" data-stock="5">
+                <button class="btn-favorito" data-id="1" title="Marcar como favorito">&#x2661;</button>
                 <div>
                     <span class="etiqueta-stock etiqueta-oferta">🔥 33% DESC</span>
-                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300" alt="Camiseta">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300&auto=format&fit=crop&q=80" alt="Camiseta" loading="lazy">
                     <h3>Camiseta</h3>
                     <div class="precio-container">
                         <span class="precio-original">$15.00</span>
@@ -267,25 +371,52 @@
                 <button class="agregar-carrito">Agregar</button>
             </div>
 
-            <!-- PRODUCTO 2 -->
+            <!-- Ejemplo para el Pantalón -->
             <div class="producto" data-id="2" data-nombre="Pantalón" data-precio="30.00" data-categoria="ropa" data-stock="3">
+                <button class="btn-favorito" data-id="2" title="Marcar como favorito">&#x2661;</button>
                 <div>
                     <span class="etiqueta-stock stock-limitado">🔥 ¡Últimas unidades! (3)</span>
-                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300" alt="Pantalón">
+                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300&auto=format&fit=crop&q=80" alt="Pantalón" loading="lazy">
                     <h3>Pantalón</h3>
-                    <div class="precio-container">
-                        <span class="precio-actual">$30.00</span>
+                    
+                    <!-- Selector de Tallas Numéricas para Pantalón -->
+                    <div style="margin: 8px 0;">
+                        <label style="font-size: 12px; font-weight: bold; color: #555;">Talla:</label>
+                        <select class="select-talla" style="padding: 4px; font-size: 12px; border-radius: 4px; border: 1px solid #ccc;">
+                            <option value="28">28</option>
+                            <option value="30">30</option>
+                            <option value="32" selected>32</option>
+                            <option value="34">34</option>
+                            <option value="36">36</option>
+                            <option value="38">38</option>
+                        </select>
                     </div>
+
+                    <div class="precio-container"><span class="precio-actual">$30.00</span></div>
                 </div>
                 <button class="agregar-carrito">Agregar</button>
             </div>
 
-            <!-- PRODUCTO 3 -->
-            <div class="producto oferta" data-id="3" data-nombre="Zapatos Deportivos Oferta" data-precio="35.00" data-categoria="ofertas" data-stock="4">
+            <!-- Ejemplo para los Zapatos -->
+            <div class="producto oferta" data-id="3" data-nombre="Zapatos Deportivos Oferta" data-precio="35.00" data-categoria="calzado" data-stock="4">
+                <button class="btn-favorito" data-id="3" title="Marcar como favorito">&#x2661;</button>
                 <div>
                     <span class="etiqueta-stock etiqueta-oferta">⚡ SUPER OFERTA</span>
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300" alt="Zapatos">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&auto=format&fit=crop&q=80" alt="Zapatos" loading="lazy">
                     <h3>Zapatos</h3>
+                    
+                    <!-- Selector de Número de Zapatos -->
+                    <div style="margin: 8px 0;">
+                        <label style="font-size: 12px; font-weight: bold; color: #555;">Número:</label>
+                        <select class="select-talla" style="padding: 4px; font-size: 12px; border-radius: 4px; border: 1px solid #ccc;">
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40" selected>40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                        </select>
+                    </div>
+
                     <div class="precio-container">
                         <span class="precio-original">$45.00</span>
                         <span class="precio-actual">$35.00</span>
@@ -294,37 +425,33 @@
                 <button class="agregar-carrito">Agregar</button>
             </div>
 
-            <!-- PRODUCTO 4 -->
             <div class="producto" data-id="4" data-nombre="Gorra" data-precio="10.00" data-categoria="accesorios" data-stock="3">
+                <button class="btn-favorito" data-id="4" title="Marcar como favorito">&#x2661;</button>
                 <div>
                     <span class="etiqueta-stock stock-limitado">🔥 ¡Últimas unidades! (3)</span>
-                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=300" alt="Gorra">
+                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=300&auto=format&fit=crop&q=80" alt="Gorra" loading="lazy">
                     <h3>Gorra</h3>
-                    <div class="precio-container">
-                        <span class="precio-actual">$10.00</span>
-                    </div>
+                    <div class="precio-container"><span class="precio-actual">$10.00</span></div>
                 </div>
                 <button class="agregar-carrito">Agregar</button>
             </div>
 
-            <!-- PRODUCTO 5 -->
             <div class="producto" data-id="5" data-nombre="Ramo de Rosas" data-precio="25.00" data-categoria="flores" data-stock="4">
+                <button class="btn-favorito" data-id="5" title="Marcar como favorito">&#x2661;</button>
                 <div>
                     <span class="etiqueta-stock stock-disponible">🟢 Disponible hoy (4)</span>
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300" alt="Ramo de Rosas">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300&auto=format&fit=crop&q=80" alt="Ramo de Rosas" loading="lazy">
                     <h3>Ramo de Rosas</h3>
-                    <div class="precio-container">
-                        <span class="precio-actual">$25.00</span>
-                    </div>
+                    <div class="precio-container"><span class="precio-actual">$25.00</span></div>
                 </div>
                 <button class="agregar-carrito">Agregar</button>
             </div>
 
-            <!-- PRODUCTO 6 -->
-            <div class="producto oferta" data-id="6" data-nombre="Girasoles en Oferta" data-precio="15.00" data-categoria="ofertas" data-stock="5">
+            <div class="producto oferta" data-id="6" data-nombre="Girasoles en Oferta" data-precio="15.00" data-categoria="flores" data-stock="5">
+                <button class="btn-favorito" data-id="6" title="Marcar como favorito">&#x2661;</button>
                 <div>
                     <span class="etiqueta-stock etiqueta-oferta">🏷️ PROMO ESPECIAL</span>
-                    <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=300" alt="Girasoles">
+                    <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=300&auto=format&fit=crop&q=80" alt="Girasoles" loading="lazy">
                     <h3>Girasoles</h3>
                     <div class="precio-container">
                         <span class="precio-original">$20.00</span>
@@ -334,58 +461,49 @@
                 <button class="agregar-carrito">Agregar</button>
             </div>
 
-            <!-- PRODUCTO 7 -->
             <div class="producto" data-id="7" data-nombre="Caja de Rosas y Chocolates" data-precio="40.00" data-categoria="flores" data-stock="2">
+                <button class="btn-favorito" data-id="7" title="Marcar como favorito">&#x2661;</button>
                 <div>
                     <span class="etiqueta-stock stock-limitado">🔥 ¡Alta demanda! (2)</span>
-                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300" alt="Caja Rosas/Choc">
+                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=80" alt="Caja Rosas/Choc" loading="lazy">
                     <h3>Caja Rosas/Choc</h3>
-                    <div class="precio-container">
-                        <span class="precio-actual">$40.00</span>
-                    </div>
+                    <div class="precio-container"><span class="precio-actual">$40.00</span></div>
                 </div>
                 <button class="agregar-carrito">Agregar</button>
             </div>
 
-            <!-- PRODUCTO 8: PERFUME ELEGANTE -->
             <div class="producto" data-id="8" data-nombre="Perfume Elegante" data-precio="25.00" data-categoria="perfumes" data-subcategoria="elegante" data-stock="5">
+                <button class="btn-favorito" data-id="8" title="Marcar como favorito">&#x2661;</button>
                 <div>
                     <span class="etiqueta-stock stock-disponible">🟢 Disponible (5)</span>
-                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=300" alt="Perfume Elegante">
+                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=300&auto=format&fit=crop&q=80" alt="Perfume Elegante" loading="lazy">
                     <h3>Perfume Elegante</h3>
-                    <div class="precio-container">
-                        <span class="precio-actual">$25.00</span>
-                    </div>
+                    <div class="precio-container"><span class="precio-actual">$25.00</span></div>
                 </div>
                 <button class="agregar-carrito">Agregar</button>
             </div>
 
-            <!-- PRODUCTO 9: PERFUME CÍTRICO -->
             <div class="producto" data-id="9" data-nombre="Perfume Cítrico Fresco" data-precio="28.00" data-categoria="perfumes" data-subcategoria="citrico" data-stock="4">
+                <button class="btn-favorito" data-id="9" title="Marcar como favorito">&#x2661;</button>
                 <div>
                     <span class="etiqueta-stock stock-disponible">🟢 Disponible (4)</span>
-                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=300" alt="Perfume Cítrico">
+                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=300&auto=format&fit=crop&q=80" alt="Perfume Cítrico" loading="lazy">
                     <h3>Perfume Cítrico</h3>
-                    <div class="precio-container">
-                        <span class="precio-actual">$28.00</span>
-                    </div>
+                    <div class="precio-container"><span class="precio-actual">$28.00</span></div>
                 </div>
                 <button class="agregar-carrito">Agregar</button>
             </div> 
 
-            <!-- PRODUCTO 10: PERFUME AMADERADO -->
             <div class="producto" data-id="10" data-nombre="Perfume Amaderado Intenso" data-precio="32.00" data-categoria="perfumes" data-subcategoria="amaderado" data-stock="3">
+                <button class="btn-favorito" data-id="10" title="Marcar como favorito">&#x2661;</button>
                 <div>
                     <span class="etiqueta-stock stock-limitado">🔥 ¡Últimas unidades! (3)</span>
-                    <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?w=300" alt="Perfume Amaderado">
+                    <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?w=300&auto=format&fit=crop&q=80" alt="Perfume Amaderado" loading="lazy">
                     <h3>Perfume Amaderado</h3>
-                    <div class="precio-container">
-                        <span class="precio-actual">$32.00</span>
-                    </div>
+                    <div class="precio-container"><span class="precio-actual">$32.00</span></div>
                 </div>
                 <button class="agregar-carrito">Agregar</button>
             </div>
-            
         </section>
 
         <aside class="carrito-container">
@@ -395,6 +513,14 @@
             <div style="margin-bottom: 10px;">
                 <label for="nombre-cliente" style="display: block; font-size: 14px; margin-bottom: 5px; font-weight: bold;">Tu Nombre:</label>
                 <input type="text" id="nombre-cliente" placeholder="Escribe tu nombre aquí" style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px;">
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label for="moneda-pago" style="display: block; font-size: 14px; margin-bottom: 5px; font-weight: bold;">Moneda:</label>
+                <select id="moneda-pago" style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px; background: white; color: #333;">
+                    <option value="Dólares (USD)">Dólares (USD)</option>
+                    <option value="Córdobas (NIO)">Córdobas (NIO)</option>
+                </select>
             </div>
 
             <div style="margin-bottom: 10px;">
@@ -409,19 +535,20 @@
 
             <div style="margin-bottom: 10px;">
                 <label for="metodo-pago" style="display: block; font-size: 14px; margin-bottom: 5px; font-weight: bold;">Método de Pago:</label>
-                <select id="metodo-pago" style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px; background: white;">
+                <select id="metodo-pago" style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px; background: white; color: #333;">
                     <option value="Efectivo">Efectivo</option>
                     <option value="Transferencia bancaria">Transferencia bancaria</option>
                     <option value="Tarjeta">Tarjeta</option>
                 </select>
             </div>
 
-            <p><strong>Total: $<span id="total-carrito">0.00</span></strong></p>
+            <p><strong>Total: <span id="simbolo-moneda-total">$</span><span id="total-carrito">0.00</span></strong></p>
             <button id="finalizar-compra">Finalizar Compra</button>
             <button id="vaciar-carrito">Vaciar Carrito</button>
         </aside>
     </main>
 
+    <!-- MODAL DE CONFIRMACIÓN DE PEDIDO -->
     <div id="modal-confirmacion" class="modal-overlay">
         <div class="modal-content">
             <h3>¡Resumen de tu Pedido! 🛒</h3>
@@ -434,10 +561,26 @@
         </div>
     </div>
 
+    <!-- MODAL DE VISTA RÁPIDA DE PRODUCTOS -->
+    <div id="modal-detalle" class="modal-overlay">
+        <div class="modal-content" style="text-align: center;">
+            <img id="detalle-img" src="" alt="Producto" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+            <h3 id="detalle-titulo" style="margin-bottom: 5px;"></h3>
+            <p id="detalle-precio" style="font-size: 18px; font-weight: bold; color: #2563eb; margin-bottom: 10px;"></p>
+            <p id="detalle-stock" style="font-size: 13px; margin-bottom: 15px;"></p>
+            <p style="font-size: 13px; color: #666; line-height: 1.4; margin-bottom: 20px;">
+                Producto de alta calidad seleccionado especialmente para ti en Variedades Reyna. Garantía de satisfacción y entrega rápida hasta la puerta de tu hogar.
+            </p>
+            <div class="modal-botones">
+                <button id="cerrar-modal-detalle" class="btn-cerrar-modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-container">
             <div class="footer-section">
-                <h3>Tienda JR</h3>
+                <h3>Variedades Reyna</h3>
                 <p>Tu tienda de confianza para encontrar ropa, calzado, accesorios y detalles florales de la más alta calidad con entrega rápida.</p>
             </div>
             <div class="footer-section">
@@ -454,26 +597,56 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Tienda JR. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Variedades Reyna. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <script>
     const carrito = document.getElementById('lista-carrito');
     const totalCarrito = document.getElementById('total-carrito');
+    const simboloMonedaTotal = document.getElementById('simbolo-moneda-total');
     const contadorCarrito = document.getElementById('contador-carrito');
     const botonVaciar = document.getElementById('vaciar-carrito');
     const botonFinalizar = document.getElementById('finalizar-compra');
     const inputBuscador = document.getElementById('buscador');
     const contenedorSubcategorias = document.getElementById('contenedor-subcategorias');
+    const selectMoneda = document.getElementById('moneda-pago');
     
     const modalConfirmacion = document.getElementById('modal-confirmacion');
     const contenidoModalResumen = document.getElementById('contenido-modal-resumen');
     const botonConfirmarWhatsApp = document.getElementById('confirmar-enviar-whatsapp');
     const botonCerrarModal = document.getElementById('cerrar-modal');
 
-    let articulosCarrito = [];
+    let articulosCarrito = JSON.parse(localStorage.getItem('VariedadesReynaCarrito')) || [];
     let urlWhatsAppFinal = "";
+    let idsFavoritos = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+        actualizarVistaStockYCarrito();
+    });
+
+    selectMoneda.addEventListener('change', () => {
+        actualizarVistaStockYCarrito();
+    });
+
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.classList.contains('btn-favorito')) {
+            const id = e.target.getAttribute('data-id');
+            if (idsFavoritos.includes(id)) {
+                idsFavoritos = idsFavoritos.filter(favId => favId !== id);
+                e.target.innerHTML = '&#x2661;';
+                e.target.classList.remove('activo');
+            } else {
+                idsFavoritos.push(id);
+                e.target.innerHTML = '&#x2764;';
+                e.target.classList.add('activo');
+            }
+            const botonActivo = document.querySelector('.filtro-btn.activo');
+            if (botonActivo && botonActivo.getAttribute('data-categoria') === 'favoritos') {
+                filtrarProductos();
+            }
+        }
+    });
 
     const botonesAgregar = document.querySelectorAll('.agregar-carrito');
     botonesAgregar.forEach(boton => {
@@ -482,18 +655,28 @@
             const id = productoHTML.getAttribute('data-id');
             const stockMaximo = parseInt(productoHTML.getAttribute('data-stock'));
 
-            const productoEnCarrito = articulosCarrito.find(p => p.id === id);
+            // Capturar la talla o número seleccionado si el producto lo tiene
+            const selectTalla = productoHTML.querySelector('.select-talla');
+            const tallaSeleccionada = selectTalla ? selectTalla.value : 'Única';
+
+            // Creamos un identificador único combinando ID y Talla 
+            // (para que si compra una camisa M y una L, se guarden por separado en el carrito)
+            const idUnico = id + '-' + tallaSeleccionada;
+
+            const productoEnCarrito = articulosCarrito.find(p => p.idUnico === idUnico);
             const cantidadActualEnCarrito = productoEnCarrito ? productoEnCarrito.cantidad : 0;
 
             if (cantidadActualEnCarrito >= stockMaximo) {
-                alert('¡Lo sentimos! Has alcanzado el límite de stock disponible para este producto.');
+                alert('¡Lo sentimos! Has alcanzado el límite de stock disponible para esta talla.');
                 return;
             }
 
             const infoProducto = {
+                idUnico: idUnico,
                 id: id,
                 nombre: productoHTML.getAttribute('data-nombre'),
                 precio: parseFloat(productoHTML.getAttribute('data-precio')),
+                talla: tallaSeleccionada,
                 cantidad: 1
             };
 
@@ -502,6 +685,12 @@
             } else {
                 articulosCarrito.push(infoProducto);
             }
+
+            const carritoIcono = document.getElementById('carrito-icono');
+            carritoIcono.classList.add('animar-carrito');
+            setTimeout(() => {
+                carritoIcono.classList.remove('animar-carrito');
+            }, 400); 
 
             actualizarVistaStockYCarrito();
         });
@@ -541,13 +730,14 @@
 
     botonVaciar.addEventListener('click', () => {
         articulosCarrito = [];
+        localStorage.removeItem('VariedadesReynaCarrito');
         document.getElementById('nombre-cliente').value = '';
         document.getElementById('telefono-cliente').value = '';
         document.getElementById('direccion-cliente').value = '';
         document.getElementById('metodo-pago').selectedIndex = 0;
+        document.getElementById('moneda-pago').selectedIndex = 0;
         inputBuscador.value = '';
         
-        // Resetear filtros a "todos"
         document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
         document.querySelector('[data-categoria="todos"]').classList.add('activo');
         document.querySelectorAll('.subfiltro-btn').forEach(b => b.classList.remove('activo-sub'));
@@ -557,6 +747,32 @@
         filtrarProductos();
         actualizarVistaStockYCarrito();
     });
+
+    function generarRespuestaTienda(datosPedido, tasaCambio, esCordobas) {
+        const { nombre, productos, total, direccion, metodoPago, moneda, simbolo } = datosPedido;
+
+        const listaProductosText = productos.map(item => {
+            let precioUnitarioDolar = item.precio;
+            let subtotalDolar = item.precio * item.cantidad;
+            if (esCordobas) {
+                let precioUnitarioCordoba = precioUnitarioDolar * tasaCambio;
+                let subtotalCordoba = subtotalDolar * tasaCambio;
+                return `• ${item.cantidad}x${item.nombre} (C$${precioUnitarioCordoba.toFixed(2)} c/u) - Subtotal: C$${subtotalCordoba.toFixed(2)}`;
+            } else {
+                return `• ${item.cantidad}x${item.nombre} ($${precioUnitarioDolar.toFixed(2)} c/u) - Subtotal:$${subtotalDolar.toFixed(2)} USD`;
+            }
+        }).join('\n');
+
+        return `¡Hola, *${nombre}*! Un gusto saludarte. 😊\n\n` +
+               `Hemos recibido la información de tu pedido para *Variedades Reyna*:\n\n` +
+               `${listaProductosText}\n\n` +
+               `*Total a pagar:* ${simbolo}${total.toFixed(2)} (${moneda})\n` +
+               (esCordobas ? `*(Tasa de cambio: $1 USD = C$${tasaCambio})*\n` : ``) +
+               `*Método de pago:* ${metodoPago}\n` +
+               `*Dirección de entrega:* ${direccion}\n\n` +
+               `Tu pedido se encuentra listo para ser procesado. En breve te confirmaremos la hora exacta de entrega.\n\n` +
+               `¡Gracias por tu compra! 📦✨`;
+    }
 
     botonFinalizar.addEventListener('click', () => {
         if (articulosCarrito.length === 0) {
@@ -586,30 +802,60 @@
         }
 
         const metodoPago = document.getElementById('metodo-pago').value;
+        const monedaPago = document.getElementById('moneda-pago').value;
 
-        let mensaje = "¡Hola! 👋 Mi nombre es *" + nombreCliente + "* y deseo realizar el siguiente pedido en *Tienda JR*:\n\n";
-        let resumenHTML = "<strong>Cliente:</strong> " + nombreCliente + "<br><strong>Teléfono:</strong> " + telefonoCliente + "<br><strong>Dirección:</strong> " + direccionCliente + "<br><strong>Pago:</strong> " + metodoPago + "<br><br><strong>Productos:</strong><br>";
-        
-        let total = 0;
-        articulosCarrito.forEach(item => {
-            const subtotal = item.precio * item.cantidad;
-            total += subtotal;
-            mensaje += "▪️ " + item.cantidad + "x " + item.nombre + " - $" + subtotal.toFixed(2) + "\n";
-            resumenHTML += "▪️ " + item.cantidad + "x " + item.nombre + " ($" + subtotal.toFixed(2) + ")<br>";
-        });
+        let totalDolares = articulosCarrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+        const tasaCambio = 36.6243; 
 
-        mensaje += "\n*Total a pagar: $" + total.toFixed(2) + "*\n";
-        mensaje += "📱 *WhatsApp del cliente:* " + telefonoCliente + "\n";
-        mensaje += "📍 *Dirección de entrega:* " + direccionCliente + "\n";
-        mensaje += "💳 *Método de pago:* " + metodoPago + "\n\n";
-        mensaje += "¡Quedo a la espera de la confirmación y el envío! 🚚✨";
+        let esCordobas = monedaPago.includes('Córdobas');
+        let totalFinal = esCordobas ? (totalDolares * tasaCambio) : totalDolares;
+        let simboloMoneda = esCordobas ? 'C$' : '$';
 
-        resumenHTML += "<br><strong>Total: $" + total.toFixed(2) + "</strong>";
+        const datos = {
+            nombre: nombreCliente,
+            telefono: telefonoCliente,
+            direccion: direccionCliente,
+            metodoPago: metodoPago,
+            moneda: monedaPago,
+            productos: articulosCarrito,
+            total: totalFinal,
+            simbolo: simboloMoneda
+        };
+
+        // Enviar automáticamente a Google Sheets
+        google.script.run
+            .withSuccessHandler(function(respuesta) {
+                console.log("Registrado en Sheets: ", respuesta);
+            })
+            .registrarPedidoEnHoja(datos);
+
+        const detalleProductos = datos.productos.map(item => {
+            let precioUnitarioDolar = item.precio;
+            let subtotalDolar = item.precio * item.cantidad;
+            let textoTalla = item.talla !== 'Única' ? ` (Talla/N°: ${item.talla})` : '';
+            
+            if (esCordobas) {
+                let precioUnitarioCordoba = precioUnitarioDolar * tasaCambio;
+                let subtotalCordoba = subtotalDolar * tasaCambio;
+                return `• ${item.cantidad}x ${item.nombre}${textoTalla} - C$${precioUnitarioCordoba.toFixed(2)} c/u - Subtotal: C$${subtotalCordoba.toFixed(2)}`;
+            } else {
+                return `• ${item.cantidad}x ${item.nombre}${textoTalla} - $${precioUnitarioDolar.toFixed(2)} c/u - Subtotal: $${subtotalDolar.toFixed(2)} USD`;
+            }
+        }).join('\n');
+
+        const mensajeCliente = `¡Hola! Mi nombre es *${datos.nombre}* y deseo realizar el siguiente pedido en *Variedades Reyna*:\n\n` +
+            detalleProductos +
+            `\n\n*Total a pagar: ${datos.simbolo}${datos.total.toFixed(2)} (${datos.moneda})*` +
+            (esCordobas ? `\n_(Tasa de cambio aplicada: $1 USD = C$${tasaCambio})_` : ``) +
+            `\n- WhatsApp del cliente: ${datos.telefono}` +
+            `\n- Dirección de entrega: ${datos.direccion}` +
+            `\n- Método de pago: ${datos.metodoPago}\n\n` +
+            `¡Quedo a la espera de la confirmación y el envío!`;
 
         const numeroWhatsApp = "50584882771"; 
-        urlWhatsAppFinal = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(mensaje);
-        
-        contenidoModalResumen.innerHTML = resumenHTML;
+        urlWhatsAppFinal = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(mensajeCliente);
+
+        contenidoModalResumen.innerText = generarRespuestaTienda(datos, tasaCambio, esCordobas);
         modalConfirmacion.style.display = 'flex';
     });
 
@@ -629,9 +875,13 @@
     });
 
     function actualizarVistaStockYCarrito() {
+        localStorage.setItem('VariedadesReynaCarrito', JSON.stringify(articulosCarrito));
+
         carrito.innerHTML = '';
-        let total = 0;
+        let totalDolares = 0;
         let totalProductos = 0;
+        const tasaCambio = 36.6243;
+        let esCordobas = selectMoneda.value.includes('Córdobas');
 
         articulosCarrito.forEach(producto => {
             const li = document.createElement('li');
@@ -639,20 +889,25 @@
             li.style.justifyContent = 'space-between';
             li.style.alignItems = 'center';
 
+            let precioMostrar = esCordobas ? (producto.precio * tasaCambio) : producto.precio;
+            let simbolo = esCordobas ? 'C$' : '$';
+
             li.innerHTML = 
-                '<span>' + producto.nombre + ' ($' + producto.precio + ')</span>' +
-                '<div>' +
-                    '<button class="btn-cantidad restar-cantidad" data-id="' + producto.id + '">-</button>' +
-                    '<span>' + producto.cantidad + '</span>' +
-                    '<button class="btn-cantidad sumar-cantidad" data-id="' + producto.id + '">+</button>' +
-                '</div>';
+                `<span>${producto.nombre} (${simbolo}${precioMostrar.toFixed(2)})</span>` +
+                `<div>` +
+                    `<button class="btn-cantidad restar-cantidad" data-id="${producto.id}">-</button>` +
+                    `<span>${producto.cantidad}</span>` +
+                    `<button class="btn-cantidad sumar-cantidad" data-id="${producto.id}">+</button>` +
+                `</div>`;
             carrito.appendChild(li);
 
-            total += producto.precio * producto.cantidad;
+            totalDolares += producto.precio * producto.cantidad;
             totalProductos += producto.cantidad;
         });
 
-        totalCarrito.textContent = total.toFixed(2);
+        let totalFinal = esCordobas ? (totalDolares * tasaCambio) : totalDolares;
+        totalCarrito.textContent = totalFinal.toFixed(2);
+        simboloMonedaTotal.textContent = esCordobas ? 'C$' : '$';
         contadorCarrito.textContent = totalProductos;
 
         const productosHTML = document.querySelectorAll('.producto');
@@ -682,7 +937,7 @@
                     etiqueta.textContent = '🔥 ¡Última unidad! (1)';
                 } else {
                     etiqueta.className = 'etiqueta-stock stock-disponible';
-                    etiqueta.textContent = '🟢 En Stock (' + stockRestante + ')';
+                    etiqueta.textContent = `🟢 En Stock (${stockRestante})`;
                 }
             }
         });
@@ -699,14 +954,24 @@
         const productos = document.querySelectorAll('.producto');
 
         productos.forEach(producto => {
+            const idProducto = producto.getAttribute('data-id');
             const catProducto = producto.getAttribute('data-categoria');
             const subCatProducto = producto.getAttribute('data-subcategoria');
             const nombreProducto = producto.getAttribute('data-nombre').toLowerCase();
+            const esOferta = producto.classList.contains('oferta');
 
-            let coincideCategoria = (categoria === 'todos' || catProducto === categoria);
+            let coincideCategoria = false;
+            if (categoria === 'todos') {
+                coincideCategoria = true;
+            } else if (categoria === 'ofertas') {
+                coincideCategoria = esOferta;
+            } else if (categoria === 'favoritos') {
+                coincideCategoria = idsFavoritos.includes(idProducto);
+            } else {
+                coincideCategoria = (catProducto === categoria);
+            }
+
             let coincideSubcategoria = true;
-
-            // Si estamos en la categoría perfumes y hay un subfiltro activo
             if (categoria === 'perfumes' && subcategoria !== 'todos-sub') {
                 coincideSubcategoria = (subCatProducto === subcategoria);
             }
@@ -721,7 +986,6 @@
         });
     }
 
-    // Eventos para Categorías Principales
     const botonesFiltro = document.querySelectorAll('.categorias-filtro .filtro-btn');
     botonesFiltro.forEach(boton => {
         boton.addEventListener('click', (e) => {
@@ -730,12 +994,10 @@
 
             const categoriaSeleccionada = e.target.getAttribute('data-categoria');
 
-            // Mostrar u ocultar subcategorías si seleccionan Perfumes
             if (categoriaSeleccionada === 'perfumes') {
                 contenedorSubcategorias.classList.add('activo');
             } else {
                 contenedorSubcategorias.classList.remove('activo');
-                // Resetear subfiltro a "todos" cuando salgan de perfumes
                 document.querySelectorAll('.subfiltro-btn').forEach(b => b.classList.remove('activo-sub'));
                 document.querySelector('[data-subcategoria="todos-sub"]').classList.add('activo-sub');
             }
@@ -744,7 +1006,6 @@
         });
     });
 
-    // Eventos para Subcategorías
     const botonesSubfiltro = document.querySelectorAll('.subfiltro-btn');
     botonesSubfiltro.forEach(boton => {
         boton.addEventListener('click', (e) => {
@@ -755,6 +1016,47 @@
     });
 
     inputBuscador.addEventListener('keyup', filtrarProductos);
-</script>
+
+    // Lógica del Modal de Vista Rápida
+    const modalDetalle = document.getElementById('modal-detalle');
+    const detalleImg = document.getElementById('detalle-img');
+    const detalleTitulo = document.getElementById('detalle-titulo');
+    const detallePrecio = document.getElementById('detalle-precio');
+    const detalleStock = document.getElementById('detalle-stock');
+    const botonCerrarDetalle = document.getElementById('cerrar-modal-detalle');
+
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.tagName === 'IMG' && e.target.closest('.producto')) {
+            const productoHTML = e.target.closest('.producto');
+            const nombre = productoHTML.getAttribute('data-nombre');
+            const precio = productoHTML.getAttribute('data-precio');
+            const stock = productoHTML.getAttribute('data-stock');
+            const imagenSrc = e.target.getAttribute('src');
+
+            let esCordobas = selectMoneda.value.includes('Córdobas');
+            const tasaCambio = 36.6243;
+            let precioMostrar = esCordobas ? (parseFloat(precio) * tasaCambio) : parseFloat(precio);
+            let simbolo = esCordobas ? 'C$' : '$';
+            let monedaTexto = esCordobas ? 'NIO' : 'USD';
+
+            detalleImg.src = imagenSrc;
+            detalleTitulo.textContent = nombre;
+            detallePrecio.textContent = `${simbolo}${precioMostrar.toFixed(2)} ${monedaTexto}`;
+            detalleStock.textContent = `Unidades disponibles en inventario: ${stock}`;
+
+            modalDetalle.style.display = 'flex';
+        }
+    });
+
+    botonCerrarDetalle.addEventListener('click', () => {
+        modalDetalle.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modalDetalle) {
+            modalDetalle.style.display = 'none';
+        }
+    });
+    </script>
 </body>
 </html>
