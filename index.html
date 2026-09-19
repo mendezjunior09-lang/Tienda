@@ -4,221 +4,541 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Variedades Reyna</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,400;0,600;0,800;1,400&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        .banner-superior {
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-            color: white;
-            padding: 10px 15px;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            font-size: 13px;
-            font-weight: 500;
-            border-radius: var(--radius) var(--radius) 0 0;
-            box-shadow: var(--shadow-sm);
-        }
-
         :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --accent: #ff4757;
-            --bg-main: #f8fafc;
+            --primary: #db2777;
+            --primary-hover: #be185d;
+            --bg-main: #fef2f2;
             --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --radius: 10px;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --radius: 16px;
+            --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 15px -3px rgba(219, 39, 119, 0.1);
         }
-
         body { 
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            font-family: 'Poppins', sans-serif; 
             margin: 0; 
-            padding: 15px; 
-            background-color: #0b0d17;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(255, 0, 128, 0.18) 0%, transparent 45%),
-                radial-gradient(circle at 85% 85%, rgba(0, 243, 255, 0.18) 0%, transparent 45%),
-                radial-gradient(rgba(0, 243, 255, 0.12) 1.5px, transparent 1.5px);
-            background-size: 100% 100%, 100% 100%, 32px 32px;
-            color: #f1f5f9;
+            padding: 0; 
+            background-color: #fff5f7;
+            color: var(--text-main);
             display: flex; 
             flex-direction: column; 
             min-height: 100vh; 
             box-sizing: border-box; 
         }
-
+        .banner-superior {
+            background: #0f172a;
+            color: white;
+            padding: 8px 15px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 12px;
+            font-weight: 500;
+        }
         header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
             background: var(--card-bg); 
-            color: var(--text-main); 
-            padding: 15px 25px; 
-            border-radius: 0 0 var(--radius) var(--radius); 
-            box-shadow: var(--shadow-md);
-            margin-bottom: 15px;
+            border-bottom: 1px solid #f3e8ff;
+            padding: 15px 30px;
         }
-
-        header h1 {
-            font-size: 1.5rem;
-            color: var(--primary);
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            cursor: pointer;
+        }
+        .logo-container img {
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: 0 4px 10px rgba(219, 39, 119, 0.3);
+            background-color: white;
+            flex-shrink: 0;
+        }
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: #1f2937;
             margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            line-height: 1.1;
         }
-
-        #carrito-icono {
-            background: var(--bg-main);
-            padding: 8px 14px;
+        .logo-text h1 span { color: var(--primary); }
+        .logo-text p {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            margin: 4px 0 0 0;
+            letter-spacing: 0.5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .search-bar {
+            flex: 1;
+            max-width: 450px;
+            display: flex;
+            align-items: center;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 30px;
+            padding: 8px 18px;
+        }
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .nav-inferior {
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 12px 20px;
+            flex-wrap: wrap;
+        }
+        .nav-inferior button {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 6px 16px;
             border-radius: 20px;
-            font-weight: 600;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            width: auto;
+            transition: background 0.2s;
         }
-
-        main { display: flex; gap: 20px; margin-top: 20px; flex-wrap: wrap; flex: 1; }
+        .nav-inferior button.active, .nav-inferior button:hover {
+            background: var(--primary);
+        }
         
-        .productos { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px; 
-            flex: 2; 
-            align-content: start;
-        }
-
-        .producto { 
-            background: var(--card-bg); 
-            padding: 15px; 
-            border-radius: var(--radius); 
-            box-shadow: var(--shadow-sm); 
-            text-align: center; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            transition: all 0.25s ease;
-            border: 1px solid #e2e8f0;
+        /* BANNER DE INICIO */
+        .hero-banner {
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+            margin: 20px auto;
+            width: 92%;
+            max-width: 1200px;
+            border-radius: 20px;
+            padding: 40px 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            box-shadow: var(--shadow-sm);
             position: relative;
             overflow: hidden;
+            border: 1px solid #fbcfe8;
+        }
+        .hero-text h2 {
+            font-size: 2.3rem;
+            color: #1f2937;
+            margin: 0 0 15px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        .hero-text h2 .script-text {
+            font-family: 'Great Vibes', cursive;
+            color: var(--primary);
+            font-size: 3.3rem;
+            font-weight: normal;
+            display: inline-block;
+            margin-left: 5px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        .brush-badge {
+            background-color: #ec4899;
+            color: white;
+            padding: 10px 35px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            box-shadow: 0 4px 10px rgba(236, 72, 153, 0.3);
+            margin: 10px 0 25px 0;
+            display: inline-block;
+        }
+        .hero-features-bar {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: #374151;
+        }
+        .feature-item span.icon { font-size: 20px; }
+        .feature-divider { width: 1px; height: 25px; background-color: #cbd5e1; }
+
+        /* PORTADA EXCLUSIVA DE ROPA */
+        .ropa-portada-container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
+        .ropa-banner-principal {
+            background: linear-gradient(135deg, #fff0f5, #ffd1dc);
+            border-radius: 20px;
+            padding: 35px 45px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #ffb6c1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ropa-banner-content { flex: 1; z-index: 2; }
+        .ropa-banner-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 5px;
+        }
+        .ropa-banner-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        .ropa-banner-subtitle {
+            font-family: 'Great Vibes', cursive;
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin: 0 0 20px 0;
+        }
+        .ropa-features {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 12px 20px;
+            border-radius: 12px;
+            width: fit-content;
+            backdrop-filter: blur(5px);
+        }
+        .ropa-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .ropa-subcat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            background: linear-gradient(135deg, #fff0f5, #ffe4e6);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid #fbcfe8;
+            box-shadow: var(--shadow-sm);
+        }
+        @media (max-width: 768px) {
+            .ropa-subcat-grid { grid-template-columns: 1fr; }
+        }
+
+        .ropa-subcat-card {
+            background: #ffffff;
+            border: 2px solid #fbcfe8;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .ropa-subcat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            background: #fdf2f8;
+            box-shadow: var(--shadow-md);
+        }
+        .ropa-subcat-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        .ropa-subcat-card span {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        main { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            display: flex; 
+            gap: 25px; 
+            flex-wrap: wrap; 
+            flex: 1; 
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .contenedor-categorias {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            flex: 2;
+            align-content: start;
+            grid-auto-flow: dense;
+        }
+        @media (max-width: 850px) {
+            .contenedor-categorias { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 500px) {
+            .contenedor-categorias { grid-template-columns: 1fr; }
+        }
+
+        #vista-nivel-3-sub {
+            flex: 2;
+            width: 100%;
+        }
+
+        .grid-subcategorias-dama {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(260px, 1fr));
+            gap: 25px;
+            width: 100%;
+            grid-auto-flow: dense;
+        }
+        @media (max-width: 850px) {
+            .grid-subcategorias-dama { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 500px) {
+            .grid-subcategorias-dama { grid-template-columns: 1fr; }
+        }
+
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            flex: 2;
+            align-content: start;
+            grid-auto-flow: dense;
+        }
+        .tarjeta-categoria {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f3e8ff;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            height: 310px;
+            justify-content: space-between;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .tarjeta-categoria:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+        .tarjeta-categoria img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 5px;
+        }
+        .badge-cat-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-top: -38px;
+            margin-bottom: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 3px solid white;
+            flex-shrink: 0;
+        }
+        .tarjeta-categoria h3 {
+            color: #1f2937;
+            margin: 0;
+            font-size: 17px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        .tarjeta-categoria p {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin: 0;
+        }
+        .btn-ver-cat {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 7px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: auto;
+            margin-top: 5px;
+        }
+        .btn-ver-cat:hover { background: var(--primary-hover); }
+
+        .producto {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #f3e8ff;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
         .producto:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: #cbd5e1;
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
         }
-
-        .producto img { 
-            width: 100%; 
-            height: 140px; 
-            object-fit: cover; 
-            border-radius: 8px; 
-            margin-bottom: 10px; 
+        .producto img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
             cursor: pointer;
-            transition: opacity 0.2s;
         }
-
-        .producto img:hover {
-            opacity: 0.85;
-        }
-
+        .producto h3 { color: #1f2937; font-size: 15px; margin: 5px 0; }
         .etiqueta-stock {
             font-size: 11px;
             font-weight: bold;
-            padding: 2px 6px;
+            padding: 2px 8px;
             border-radius: 4px;
             margin-bottom: 6px;
             display: inline-block;
+            align-self: center;
         }
-        .stock-disponible { background-color: #d4edda; color: #155724; }
-        .stock-limitado { background-color: #fff3cd; color: #856404; }
-        .stock-agotado { background-color: #f8d7da; color: #721c24; }
-        .etiqueta-oferta { background-color: #ff4757; color: white; }
-        
+        .stock-disponible { background-color: #d1fae5; color: #065f46; }
         .precio-container { margin: 5px 0; }
-        .precio-original { font-size: 12px; color: #999; text-decoration: line-through; margin-right: 5px; }
-        .precio-actual { font-size: 15px; font-weight: bold; color: #333; }
-        .producto.oferta .precio-actual { color: #ff4757; }
-
+        .precio-actual { font-size: 16px; font-weight: bold; color: var(--primary); }
         .carrito-container { 
-            background: white; 
+            background: var(--card-bg); 
             padding: 20px; 
-            border-radius: 5px; 
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+            border-radius: var(--radius); 
+            box-shadow: var(--shadow-sm); 
+            border: 1px solid #f3e8ff;
             flex: 1; 
-            min-width: 250px; 
+            min-width: 280px; 
             height: fit-content; 
             position: sticky;
             top: 20px;
             z-index: 100;
         }
-
-        button { background: #28a745; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 3px; margin-top: 5px; font-weight: bold; }
-        button:hover { background: #218838; }
-        button:disabled { background: #cccccc; cursor: not-allowed; }
-        #vaciar-carrito { background: #dc3545; width: 100%; margin-top: 10px; }
-        #vaciar-carrito:hover { background: #c82333; }
-        #finalizar-compra { background: #007bff; width: 100%; margin-top: 10px; }
-        #finalizar-compra:hover { background: #0056b3; }
-        ul { padding-left: 0; list-style: none; max-height: 200px; overflow-y: auto; }
-        li { border-bottom: 1px solid #ddd; padding: 8px 0; font-size: 14px; }
-        .btn-cantidad { background: #6c757d; padding: 2px 8px; font-size: 12px; margin: 0 4px; }
-        .btn-cantidad:hover { background: #5a6268; }
-
-        .barra-superior-catalogo { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; width: 100%; grid-column: 1 / -1; }
-        .fila-filtros-principales { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; width: 100%; }
-        
-        .fila-subcategorias { display: none; gap: 8px; flex-wrap: wrap; padding-left: 5px; border-left: 3px solid #007bff; margin-top: 5px; }
-        .fila-subcategorias.activo { display: flex; }
-
-        .filtro-btn { 
-            background: #e2e8f0; 
-            color: var(--text-main);
-            padding: 7px 14px; 
-            font-size: 13px; 
+        .carrito-container h2 { margin-top: 0; color: #1f2937; font-size: 1.2rem; }
+        button.agregar-carrito { 
+            background: var(--primary); 
+            color: white; 
+            border: none; 
+            padding: 8px 12px; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        button.agregar-carrito:hover { background: var(--primary-hover); }
+        .btn-volver {
+            background: #9ca3af;
+            width: auto;
+            padding: 6px 14px;
+            font-size: 13px;
             border-radius: 20px;
-            font-weight: 500;
-            transition: all 0.2s;
+            margin-bottom: 15px;
+            color: white;
             border: none;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
         }
-        .filtro-btn.activo { background: var(--primary); color: white; }
-        .filtro-btn:hover { background: #cbd5e1; }
-        .filtro-btn.btn-oferta-filtro { background: #fee2e2; color: #dc2626; }
-        .filtro-btn.btn-oferta-filtro:hover { background: #fecaca; }
-
-        .buscador-input { 
-            padding: 9px 15px; 
-            font-size: 14px; 
-            border: 1px solid #cbd5e1; 
-            border-radius: 20px; 
-            width: 240px; 
-            outline: none; 
-            background: var(--card-bg);
-            color: #1e293b;
+        .btn-volver:hover { background: #6b7280; }
+        #vaciar-carrito { background: #ef4444; margin-top: 10px; color: white; border: none; padding: 10px; border-radius: 6px; width: 100%; cursor: pointer;}
+        #vaciar-carrito:hover { background: #dc2626; }
+        #finalizar-compra { background: #10b981; margin-top: 10px; color: white; border: none; padding: 10px; border-radius: 6px; width: 100%; cursor: pointer;}
+        #finalizar-compra:hover { background: #059669; }
+        ul { padding-left: 0; list-style: none; max-height: 200px; overflow-y: auto; margin: 15px 0; }
+        li { border-bottom: 1px solid #f3f4f6; padding: 8px 0; font-size: 13px; display: flex; justify-content: space-between; align-items: center;}
+        .btn-cantidad { 
+            background: #e5e7eb; 
+            color: #374151;
+            padding: 2px 8px; 
+            font-size: 12px; 
+            margin: 0 4px; 
+            width: auto;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
-        .buscador-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
-
-        @media (max-width: 768px) {
-            body { padding: 8px; }
-            .banner-superior { font-size: 11px; gap: 10px; text-align: center; padding: 8px; }
-            header { padding: 10px 15px; }
-            main { flex-direction: column; gap: 15px; }
-            .productos { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .producto img { height: 110px; }
-            .carrito-container { width: 100%; box-sizing: border-box; position: static; }
-            .fila-filtros-principales { flex-direction: column; align-items: stretch; }
-            .buscador-input { width: 100%; box-sizing: border-box; }
-        }
-
-        @media (max-width: 480px) {
-            .productos { grid-template-columns: 1fr; } 
-        }
-
+        .btn-cantidad:hover { background: #d1d5db; }
         .modal-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -226,40 +546,32 @@
         .modal-content {
             background: white;
             padding: 25px;
-            border-radius: 8px;
+            border-radius: var(--radius);
             width: 90%;
             max-width: 450px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            box-sizing: border-box;
+            box-shadow: var(--shadow-md);
             text-align: left;
-            color: #333;
         }
-        .modal-content h3 { margin-top: 0; color: #333; }
         .modal-resumen {
-            background: #f8f9fa;
+            background: #f9fafb;
             padding: 12px;
-            border-radius: 5px;
+            border-radius: 6px;
             font-size: 13px;
-            line-height: 1.5;
-            max-height: 150px;
+            max-height: 180px;
             overflow-y: auto;
-            border: 1px solid #ddd;
+            border: 1px solid #e5e7eb;
             margin: 15px 0;
-            color: #333;
+            white-space: pre-wrap;
         }
         .modal-botones { display: flex; gap: 10px; margin-top: 15px; }
-        .btn-whatsapp-modal { background: #25d366; flex: 1; }
-        .btn-whatsapp-modal:hover { background: #1ebe5d; }
-        .btn-cerrar-modal { background: #6c757d; flex: 1; }
-        .btn-cerrar-modal:hover { background: #5a6268; }
-
+        .btn-whatsapp-modal { background: #22c55e; color: white; border: none; padding: 10px; border-radius: 6px; flex: 1; cursor: pointer; font-weight: bold;}
+        .btn-whatsapp-modal:hover { background: #16a34a; }
+        .btn-cerrar-modal { background: #6b7280; color: white; border: none; padding: 10px; border-radius: 6px; flex: 1; cursor: pointer;}
         footer {
-            background-color: #11131d;
-            color: #ccc;
+            background-color: #0f172a;
+            color: #94a3b8;
             margin-top: 40px;
-            padding: 30px 20px 20px 20px;
-            border-radius: 8px 8px 0 0;
-            border-top: 1px solid rgba(0, 243, 255, 0.2);
+            padding: 30px 20px;
         }
         .footer-container {
             display: flex;
@@ -274,305 +586,238 @@
         .footer-section { flex: 1; min-width: 220px; }
         .footer-section h3 { color: white; font-size: 16px; margin-bottom: 10px; }
         .footer-section p, .footer-section ul { font-size: 14px; line-height: 1.6; }
-        .footer-section ul { list-style: none; padding: 0; }
-        .footer-section ul li { border: none; padding: 3px 0; color: #bbb; }
-        .footer-bottom { text-align: center; font-size: 13px; color: #888; margin-top: 20px; }
-
-        .producto h3 { color: #1e293b; }
-        .carrito-container h2, 
-        .carrito-container label, 
-        .carrito-container p { color: #1e293b; }
-        #lista-carrito li span { color: #1e293b; }
-
-        @keyframes reboteCarrito {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.18); background-color: #dbeafe; border-color: #2563eb; }
-            100% { transform: scale(1); }
+        .footer-section ul { list-style: none; padding: 0; margin: 0; }
+        .footer-bottom { text-align: center; font-size: 13px; color: #64748b; margin-top: 20px; }
+        input, select {
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 13px;
+            font-family: 'Poppins', sans-serif;
         }
-        .animar-carrito { animation: reboteCarrito 0.4s ease; }
-        
-        .btn-favorito {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-            z-index: 10;
-            transition: transform 0.2s ease;
-            margin-top: 0;
-            color: #ff4757;
-        }
-        .btn-favorito:hover { transform: scale(1.15); background: #ffffff; }
-        .btn-favorito.activo { background: #ffe4e6; color: #ff4757; }
     </style>
 </head>
 <body>
-
     <div class="banner-superior">
-        <div class="banner-item">🚚 Envíos rápidos y seguros</div>
-        <div class="banner-item">🔒 Pagos 100% confiables</div>
-        <div class="banner-item">💬 Atención personalizada vía WhatsApp</div>
+        <div>🚚 Envíos rápidos y seguros</div>
+        <div>🔒 Pagos 100% confiables</div>
+        <div>💬 Atención personalizada vía WhatsApp</div>
+    </div>
+    <header>
+        <div class="header-main">
+            <div class="logo-container" onclick="regresarANivel1()">
+                <img src="https://lh3.googleusercontent.com/d/11Hda-uznsF9RLAbb69xz7ltl5xN9zq4l" alt="Variedades Reyna Logo">
+                <div class="logo-text">
+                    <h1>Variedades <span>Reyna</span></h1>
+                    <p>Moda • Estilo • Detalles que Inspiran</p>
+                </div>
+            </div>
+            <div class="search-bar">
+                <span style="margin-right: 8px;">🔍</span>
+                <input type="text" id="input-buscador" placeholder="Buscar productos por nombre...">
+            </div>
+            <div class="header-actions">
+                <div id="carrito-icono" style="cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                    🛒 Carrito: <span id="contador-carrito" style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 50%;">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="nav-inferior">
+        <button onclick="regresarANivel1()" class="active">Inicio</button>
+        <button onclick="irANivel2Ropa()">Ropa</button>
+        <button onclick="mostrarProductosDirectos('calzado')">Calzados</button>
+        <button onclick="mostrarProductosDirectos('flores')">Flores</button>
+        <button onclick="mostrarProductosDirectos('perfumes')">Perfumes</button>
     </div>
 
-    <header>
-        <h1>Variedades Reyna</h1>
-        <div id="carrito-icono">🛒 Carrito: <span id="contador-carrito">0</span></div>
-    </header>
+    <!-- BANNER DE INICIO -->
+    <div id="banner-principal-home" class="hero-banner">
+        <div class="hero-text">
+            <h2>Todo lo que necesitas en <span class="script-text">un solo lugar</span></h2>
+            <div class="brush-badge">Ropa • Calzados • Flores • Perfumes</div>
+            <div class="hero-features-bar">
+                <div class="feature-item"><span class="icon">🛡️</span><div><strong>Calidad</strong><br>garantizada</div></div>
+                <div class="feature-divider"></div>
+                <div class="feature-item"><span class="icon">🚚</span><div><strong>Envíos a</strong><br>todo el país</div></div>
+                <div class="feature-divider"></div>
+                <div class="feature-item"><span class="icon">♥</span><div><strong>Tu satisfacción</strong><br>es nuestra prioridad</div></div>
+            </div>
+        </div>
+    </div>
 
     <main>
-        <section class="productos">
-            <div class="barra-superior-catalogo">
-                <div class="fila-filtros-principales">
-                    <div class="categorias-filtro">
-                        <button class="filtro-btn activo" data-categoria="todos">Todos</button>
-                        <button class="filtro-btn btn-oferta-filtro" data-categoria="ofertas">🔥 Ofertas</button>
-                        <button class="filtro-btn" data-categoria="favoritos">❤️ Favoritos</button>
-                        <button class="filtro-btn" data-categoria="ropa">Ropa</button>
-                        <button class="filtro-btn" data-categoria="calzado">Calzado</button>
-                        <button class="filtro-btn" data-categoria="accesorios">Accesorios</button>
-                        <button class="filtro-btn" data-categoria="flores">Flores</button>
-                        <button class="filtro-btn" data-categoria="perfumes">Perfumes</button>
-                    </div>
-                    <div>
-                        <input type="text" id="buscador" class="buscador-input" placeholder="🔍 Buscar producto...">
-                    </div>
-                </div>
-
-                <div id="contenedor-subcategorias" class="fila-subcategorias">
-                    <span style="font-size: 13px; font-weight: bold; align-self: center; color: #555;">Tipo de Perfume:</span>
-                    <button class="filtro-btn subfiltro-btn activo-sub" data-subcategoria="todos-sub">Todos los perfumes</button>
-                    <button class="filtro-btn subfiltro-btn" data-subcategoria="elegante">Elegantes</button>
-                    <button class="filtro-btn subfiltro-btn" data-subcategoria="citrico">Cítricos</button>
-                    <button class="filtro-btn subfiltro-btn" data-subcategoria="amaderado">Amaderados</button>
-                </div>
+        <!-- NIVEL 1: Categorías Principales -->
+        <div id="vista-nivel-1" class="contenedor-categorias">
+            <div class="tarjeta-categoria" onclick="irANivel2Ropa()">
+                <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=300&auto=format&fit=crop&q=80" alt="Ropa">
+                <div class="badge-cat-icon">👚</div>
+                <h3>Ropa</h3>
+                <p>Para cada estilo, una opción</p>
+                <button class="btn-ver-cat">Ver categoría →</button>
             </div>
-
-            <!-- PRODUCTOS -->
-            <div class="producto oferta" data-id="1" data-nombre="Camiseta en Oferta" data-precio="10.00" data-categoria="ropa" data-stock="5">
-                <button class="btn-favorito" data-id="1" title="Marcar como favorito">&#x2661;</button>
-                <div>
-                    <span class="etiqueta-stock etiqueta-oferta">🔥 33% DESC</span>
-                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300&auto=format&fit=crop&q=80" alt="Camiseta" loading="lazy">
-                    <h3>Camiseta</h3>
-                    <div class="precio-container">
-                        <span class="precio-original">$15.00</span>
-                        <span class="precio-actual">$10.00</span>
-                    </div>
-                </div>
-                <button class="agregar-carrito">Agregar</button>
+            <div class="tarjeta-categoria" onclick="mostrarProductosDirectos('calzado')">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&auto=format&fit=crop&q=80" alt="Calzado">
+                <div class="badge-cat-icon">👟</div>
+                <h3>Calzados</h3>
+                <p>Comodidad y estilo en cada paso</p>
+                <button class="btn-ver-cat">Ver categoría →</button>
             </div>
-
-            <!-- Ejemplo para el Pantalón -->
-            <div class="producto" data-id="2" data-nombre="Pantalón" data-precio="30.00" data-categoria="ropa" data-stock="3">
-                <button class="btn-favorito" data-id="2" title="Marcar como favorito">&#x2661;</button>
-                <div>
-                    <span class="etiqueta-stock stock-limitado">🔥 ¡Últimas unidades! (3)</span>
-                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300&auto=format&fit=crop&q=80" alt="Pantalón" loading="lazy">
-                    <h3>Pantalón</h3>
-                    
-                    <!-- Selector de Tallas Numéricas para Pantalón -->
-                    <div style="margin: 8px 0;">
-                        <label style="font-size: 12px; font-weight: bold; color: #555;">Talla:</label>
-                        <select class="select-talla" style="padding: 4px; font-size: 12px; border-radius: 4px; border: 1px solid #ccc;">
-                            <option value="28">28</option>
-                            <option value="30">30</option>
-                            <option value="32" selected>32</option>
-                            <option value="34">34</option>
-                            <option value="36">36</option>
-                            <option value="38">38</option>
-                        </select>
-                    </div>
-
-                    <div class="precio-container"><span class="precio-actual">$30.00</span></div>
-                </div>
-                <button class="agregar-carrito">Agregar</button>
+            <div class="tarjeta-categoria" onclick="mostrarProductosDirectos('flores')">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300&auto=format&fit=crop&q=80" alt="Flores">
+                <div class="badge-cat-icon">💐</div>
+                <h3>Flores</h3>
+                <p>El mejor detalle, siempre</p>
+                <button class="btn-ver-cat">Ver categoría →</button>
             </div>
+            <div class="tarjeta-categoria" onclick="mostrarProductosDirectos('perfumes')">
+                <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=300&auto=format&fit=crop&q=80" alt="Perfumes">
+                <div class="badge-cat-icon">🛍️</div>
+                <h3>Perfumes</h3>
+                <p>Aroma que deja huella</p>
+                <button class="btn-ver-cat">Ver categoría →</button>
+            </div>
+        </div>
 
-            <!-- Ejemplo para los Zapatos -->
-            <div class="producto oferta" data-id="3" data-nombre="Zapatos Deportivos Oferta" data-precio="35.00" data-categoria="calzado" data-stock="4">
-                <button class="btn-favorito" data-id="3" title="Marcar como favorito">&#x2661;</button>
-                <div>
-                    <span class="etiqueta-stock etiqueta-oferta">⚡ SUPER OFERTA</span>
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&auto=format&fit=crop&q=80" alt="Zapatos" loading="lazy">
-                    <h3>Zapatos</h3>
-                    
-                    <!-- Selector de Número de Zapatos -->
-                    <div style="margin: 8px 0;">
-                        <label style="font-size: 12px; font-weight: bold; color: #555;">Número:</label>
-                        <select class="select-talla" style="padding: 4px; font-size: 12px; border-radius: 4px; border: 1px solid #ccc;">
-                            <option value="38">38</option>
-                            <option value="39">39</option>
-                            <option value="40" selected>40</option>
-                            <option value="41">41</option>
-                            <option value="42">42</option>
-                        </select>
+        <!-- NIVEL 2: SUBCATEGORÍAS DE ROPA -->
+        <div id="vista-nivel-2-ropa" class="ropa-portada-container" style="display: none;">
+            <div style="width: 100%;">
+                <button class="btn-volver" onclick="regresarANivel1()">← Volver a Categorías</button>
+            </div>
+            
+            <div class="ropa-banner-principal">
+                <div class="ropa-banner-content">
+                    <div class="ropa-banner-title">
+                        <span style="font-size: 32px;">👗</span>
+                        <h2>ROPA</h2>
                     </div>
-
-                    <div class="precio-container">
-                        <span class="precio-original">$45.00</span>
-                        <span class="precio-actual">$35.00</span>
+                    <p class="ropa-banner-subtitle">Estilo que habla por ti</p>
+                    <div class="ropa-features">
+                        <div class="ropa-feature-item"><span>🛡️</span> Calidad garantizada</div>
+                        <div class="ropa-feature-item"><span>🚚</span> Envíos a todo el país</div>
+                        <div class="ropa-feature-item"><span>♥</span> Tu satisfacción es nuestra prioridad</div>
                     </div>
                 </div>
-                <button class="agregar-carrito">Agregar</button>
             </div>
 
-            <div class="producto" data-id="4" data-nombre="Gorra" data-precio="10.00" data-categoria="accesorios" data-stock="3">
-                <button class="btn-favorito" data-id="4" title="Marcar como favorito">&#x2661;</button>
-                <div>
-                    <span class="etiqueta-stock stock-limitado">🔥 ¡Últimas unidades! (3)</span>
-                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=300&auto=format&fit=crop&q=80" alt="Gorra" loading="lazy">
-                    <h3>Gorra</h3>
-                    <div class="precio-container"><span class="precio-actual">$10.00</span></div>
+            <div class="ropa-subcat-grid">
+                <div class="ropa-subcat-card" onclick="irANivel3Sub('dama')">
+                    <div class="ropa-subcat-icon">💃</div>
+                    <span>Damas</span>
                 </div>
-                <button class="agregar-carrito">Agregar</button>
+                <div class="ropa-subcat-card" onclick="irANivel3Sub('caballero')">
+                    <div class="ropa-subcat-icon">👔</div>
+                    <span>Caballeros</span>
+                </div>
+                <div class="ropa-subcat-card" onclick="irANivel3Sub('estilo')">
+                    <div class="ropa-subcat-icon">✨</div>
+                    <span>Por Estilo</span>
+                </div>
             </div>
+        </div>
 
-            <div class="producto" data-id="5" data-nombre="Ramo de Rosas" data-precio="25.00" data-categoria="flores" data-stock="4">
-                <button class="btn-favorito" data-id="5" title="Marcar como favorito">&#x2661;</button>
-                <div>
-                    <span class="etiqueta-stock stock-disponible">🟢 Disponible hoy (4)</span>
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300&auto=format&fit=crop&q=80" alt="Ramo de Rosas" loading="lazy">
-                    <h3>Ramo de Rosas</h3>
-                    <div class="precio-container"><span class="precio-actual">$25.00</span></div>
-                </div>
-                <button class="agregar-carrito">Agregar</button>
+        <!-- NIVEL 3: TIPOS DE PRENDA DENTRO DE CADA SUBCATEGORÍA -->
+        <div id="vista-nivel-3-sub" style="display: none; flex: 2; width: 100%;">
+            <div style="margin-bottom: 20px;">
+                <button class="btn-volver" onclick="regresarANivel2Ropa()">← Volver</button>
             </div>
+            <div id="contenedor-subtipos" class="grid-subcategorias-dama"></div>
+        </div>
 
-            <div class="producto oferta" data-id="6" data-nombre="Girasoles en Oferta" data-precio="15.00" data-categoria="flores" data-stock="5">
-                <button class="btn-favorito" data-id="6" title="Marcar como favorito">&#x2661;</button>
-                <div>
-                    <span class="etiqueta-stock etiqueta-oferta">🏷️ PROMO ESPECIAL</span>
-                    <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?w=300&auto=format&fit=crop&q=80" alt="Girasoles" loading="lazy">
-                    <h3>Girasoles</h3>
-                    <div class="precio-container">
-                        <span class="precio-original">$20.00</span>
-                        <span class="precio-actual">$15.00</span>
-                    </div>
-                </div>
-                <button class="agregar-carrito">Agregar</button>
+        <!-- NIVEL 4: PRODUCTOS MUESTRA (ID Corregido para sincronizar con JS) -->
+        <section class="productos" id="vista-nivel-4-productos" style="display: none;">
+            <div style="grid-column: 1 / -1;">
+                <button class="btn-volver" onclick="regresarANivel3Sub()">← Volver</button>
             </div>
+            <!-- DAMA -->
+            <div class="producto" data-id="101" data-nombre="Blusa Casual Elegante" data-precio="12.00" data-sub="dama-blusas" data-stock="5"><img src="https://images.unsplash.com/photo-1564257577519-74d754e0b04a?w=300&auto=format&fit=crop&q=80" alt="Blusa"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Blusa Casual Elegante</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option></select></div><div class="precio-container"><span class="precio-actual">$12.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="102" data-nombre="Camisa Ejecutiva Dama" data-precio="18.00" data-sub="dama-camisas" data-stock="4"><img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=300&auto=format&fit=crop&q=80" alt="Camisa"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Camisa Ejecutiva Dama</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option></select></div><div class="precio-container"><span class="precio-actual">$18.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="103" data-nombre="Pantalón Formal Tiro Alto" data-precio="22.00" data-sub="dama-pantalones" data-stock="3"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&auto=format&fit=crop&q=80" alt="Pantalon"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Pantalón Formal Tiro Alto</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="6">6</option><option value="8" selected>8</option><option value="10">10</option></select></div><div class="precio-container"><span class="precio-actual">$22.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="104" data-nombre="Jeans Skinny Azul" data-precio="25.00" data-sub="dama-jeans" data-stock="5"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300&auto=format&fit=crop&q=80" alt="Jeans"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Jeans Skinny Azul</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="8">8</option><option value="10" selected>10</option><option value="12">12</option></select></div><div class="precio-container"><span class="precio-actual">$25.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="105" data-nombre="Short Jeans Verano" data-precio="14.00" data-sub="dama-shorts" data-stock="4"><img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=300&auto=format&fit=crop&q=80" alt="Short"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Short Jeans Verano</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option></select></div><div class="precio-container"><span class="precio-actual">$14.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="106" data-nombre="Leggings Deportivos Pro" data-precio="18.00" data-sub="dama-deportiva" data-stock="5"><img src="https://images.unsplash.com/photo-1506152983158-b4a74a01c721?w=300&auto=format&fit=crop&q=80" alt="Deportiva"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Leggings Deportivos Pro</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option></select></div><div class="precio-container"><span class="precio-actual">$18.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            
+            <!-- CABALLERO -->
+            <div class="producto" data-id="200" data-nombre="Camisa Formal Caballero" data-precio="21.00" data-sub="caballero-camisas" data-stock="5"><img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=300&auto=format&fit=crop&q=80" alt="Camisa"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Camisa Formal Caballero</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select></div><div class="precio-container"><span class="precio-actual">$21.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="205" data-nombre="Camiseta Básica Caballero" data-precio="11.00" data-sub="caballero-camisetas" data-stock="5"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300&auto=format&fit=crop&q=80" alt="Camiseta"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Camiseta Básica Caballero</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option></select></div><div class="precio-container"><span class="precio-actual">$11.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="201" data-nombre="Polo Clásico Piqué" data-precio="16.00" data-sub="caballero-polos" data-stock="5"><img src="https://images.unsplash.com/photo-1625910513418-502334d0282c?w=300&auto=format&fit=crop&q=80" alt="Polo"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Polo Clásico Piqué</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option></select></div><div class="precio-container"><span class="precio-actual">$16.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="202" data-nombre="Pantalón Casual Vestir" data-precio="28.00" data-sub="caballero-pantalones" data-stock="4"><img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=300&auto=format&fit=crop&q=80" alt="Pantalon"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Pantalón Casual Vestir</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="30">30</option><option value="32" selected>32</option><option value="34">34</option></select></div><div class="precio-container"><span class="precio-actual">$28.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="203" data-nombre="Jeans Clásico Regular" data-precio="30.00" data-sub="caballero-jeans" data-stock="5"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=300&auto=format&fit=crop&q=80" alt="Jeans"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Jeans Clásico Regular</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="32">32</option><option value="34" selected>34</option><option value="36">36</option></select></div><div class="precio-container"><span class="precio-actual">$30.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="204" data-nombre="Short Playero Bermuda" data-precio="16.00" data-sub="caballero-shorts" data-stock="5"><img src="https://images.unsplash.com/photo-1565084888279-aca607ec8c0a?w=300&auto=format&fit=crop&q=80" alt="Short"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Short Playero Bermuda</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="30">30</option><option value="32" selected>32</option><option value="34">34</option></select></div><div class="precio-container"><span class="precio-actual">$16.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            
+            <!-- POR ESTILO -->
+            <div class="producto" data-id="303" data-nombre="Outfit Casual Urbano" data-precio="26.00" data-sub="estilo-casual" data-stock="5"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&auto=format&fit=crop&q=80" alt="Casual"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Outfit Casual Urbano</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option></select></div><div class="precio-container"><span class="precio-actual">$26.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="304" data-nombre="Traje Sastre Elegante" data-precio="55.00" data-sub="estilo-formal" data-stock="4"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=300&auto=format&fit=crop&q=80" alt="Formal"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Traje Sastre Elegante</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="38">38</option><option value="40" selected>40</option><option value="42">42</option></select></div><div class="precio-container"><span class="precio-actual">$55.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="301" data-nombre="Conjunto Activewear" data-precio="32.00" data-sub="estilo-deportivo" data-stock="5"><img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=300&auto=format&fit=crop&q=80" alt="Deportivo"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Conjunto Activewear</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option></select></div><div class="precio-container"><span class="precio-actual">$32.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="302" data-nombre="Vestido Cóctel Noche" data-precio="45.00" data-sub="estilo-fiesta" data-stock="4"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&auto=format&fit=crop&q=80" alt="Fiesta"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Vestido Cóctel Noche</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Talla:</label><select class="select-talla"><option value="S">S</option><option value="M" selected>M</option><option value="L">L</option></select></div><div class="precio-container"><span class="precio-actual">$45.00</span></div><button class="agregar-carrito">Agregar</button></div>
 
-            <div class="producto" data-id="7" data-nombre="Caja de Rosas y Chocolates" data-precio="40.00" data-categoria="flores" data-stock="2">
-                <button class="btn-favorito" data-id="7" title="Marcar como favorito">&#x2661;</button>
-                <div>
-                    <span class="etiqueta-stock stock-limitado">🔥 ¡Alta demanda! (2)</span>
-                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=300&auto=format&fit=crop&q=80" alt="Caja Rosas/Choc" loading="lazy">
-                    <h3>Caja Rosas/Choc</h3>
-                    <div class="precio-container"><span class="precio-actual">$40.00</span></div>
-                </div>
-                <button class="agregar-carrito">Agregar</button>
-            </div>
-
-            <div class="producto" data-id="8" data-nombre="Perfume Elegante" data-precio="25.00" data-categoria="perfumes" data-subcategoria="elegante" data-stock="5">
-                <button class="btn-favorito" data-id="8" title="Marcar como favorito">&#x2661;</button>
-                <div>
-                    <span class="etiqueta-stock stock-disponible">🟢 Disponible (5)</span>
-                    <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=300&auto=format&fit=crop&q=80" alt="Perfume Elegante" loading="lazy">
-                    <h3>Perfume Elegante</h3>
-                    <div class="precio-container"><span class="precio-actual">$25.00</span></div>
-                </div>
-                <button class="agregar-carrito">Agregar</button>
-            </div>
-
-            <div class="producto" data-id="9" data-nombre="Perfume Cítrico Fresco" data-precio="28.00" data-categoria="perfumes" data-subcategoria="citrico" data-stock="4">
-                <button class="btn-favorito" data-id="9" title="Marcar como favorito">&#x2661;</button>
-                <div>
-                    <span class="etiqueta-stock stock-disponible">🟢 Disponible (4)</span>
-                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=300&auto=format&fit=crop&q=80" alt="Perfume Cítrico" loading="lazy">
-                    <h3>Perfume Cítrico</h3>
-                    <div class="precio-container"><span class="precio-actual">$28.00</span></div>
-                </div>
-                <button class="agregar-carrito">Agregar</button>
-            </div> 
-
-            <div class="producto" data-id="10" data-nombre="Perfume Amaderado Intenso" data-precio="32.00" data-categoria="perfumes" data-subcategoria="amaderado" data-stock="3">
-                <button class="btn-favorito" data-id="10" title="Marcar como favorito">&#x2661;</button>
-                <div>
-                    <span class="etiqueta-stock stock-limitado">🔥 ¡Últimas unidades! (3)</span>
-                    <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?w=300&auto=format&fit=crop&q=80" alt="Perfume Amaderado" loading="lazy">
-                    <h3>Perfume Amaderado</h3>
-                    <div class="precio-container"><span class="precio-actual">$32.00</span></div>
-                </div>
-                <button class="agregar-carrito">Agregar</button>
-            </div>
+            <!-- OTRAS CATEGORÍAS DIRECTAS -->
+            <div class="producto" data-id="401" data-nombre="Zapatos Deportivos" data-precio="35.00" data-categoria="calzado" data-stock="4"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&auto=format&fit=crop&q=80" alt="Zapatos"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Zapatos Deportivos</h3><div style="margin: 8px 0;"><label style="font-size: 11px; font-weight: bold;">Número:</label><select class="select-talla"><option value="38">38</option><option value="39">39</option><option value="40" selected>40</option><option value="41">41</option></select></div><div class="precio-container"><span class="precio-actual">$35.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="402" data-nombre="Ramo de Rosas" data-precio="25.00" data-categoria="flores" data-stock="4"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=300&auto=format&fit=crop&q=80" alt="Flores"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Ramo de Rosas</h3><div class="precio-container"><span class="precio-actual">$25.00</span></div><button class="agregar-carrito">Agregar</button></div>
+            <div class="producto" data-id="403" data-nombre="Perfume Elegante" data-precio="25.00" data-categoria="perfumes" data-stock="5"><img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=300&auto=format&fit=crop&q=80" alt="Perfume"><span class="etiqueta-stock stock-disponible">Disponible</span><h3>Perfume Elegante</h3><div class="precio-container"><span class="precio-actual">$25.00</span></div><button class="agregar-carrito">Agregar</button></div>
         </section>
 
+        <!-- EL CARRITO -->
         <aside class="carrito-container">
-            <h2>Tu Carrito</h2>
-            <ul id="lista-carrito"></ul>
-            
+            <h2>Tu Carrito de Compras</h2>
+            <ul id="lista-carrito"></ul>           
             <div style="margin-bottom: 10px;">
-                <label for="nombre-cliente" style="display: block; font-size: 14px; margin-bottom: 5px; font-weight: bold;">Tu Nombre:</label>
-                <input type="text" id="nombre-cliente" placeholder="Escribe tu nombre aquí" style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px;">
+                <label style="display: block; font-size: 12px; margin-bottom: 3px; font-weight: bold;">Tu Nombre:</label>
+                <input type="text" id="nombre-cliente" placeholder="Escribe tu nombre">
             </div>
-
             <div style="margin-bottom: 10px;">
-                <label for="moneda-pago" style="display: block; font-size: 14px; margin-bottom: 5px; font-weight: bold;">Moneda:</label>
-                <select id="moneda-pago" style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px; background: white; color: #333;">
+                <label style="display: block; font-size: 12px; margin-bottom: 3px; font-weight: bold;">Moneda:</label>
+                <select id="moneda-pago">
                     <option value="Dólares (USD)">Dólares (USD)</option>
                     <option value="Córdobas (NIO)">Córdobas (NIO)</option>
                 </select>
             </div>
-
             <div style="margin-bottom: 10px;">
-                <label for="telefono-cliente" style="display: block; font-size: 14px; margin-bottom: 5px; font-weight: bold;">Tu WhatsApp o Teléfono:</label>
-                <input type="text" id="telefono-cliente" placeholder="Ej. 88888888" style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px;">
+                <label style="display: block; font-size: 12px; margin-bottom: 3px; font-weight: bold;">WhatsApp o Teléfono:</label>
+                <input type="text" id="telefono-cliente" placeholder="Ej. 88888888">
             </div>
-
             <div style="margin-bottom: 10px;">
-                <label for="direccion-cliente" style="display: block; font-size: 14px; margin-bottom: 5px; font-weight: bold;">Dirección de Entrega:</label>
-                <input type="text" id="direccion-cliente" placeholder="Barrio, ciudad o punto de referencia" style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px;">
+                <label style="display: block; font-size: 12px; margin-bottom: 3px; font-weight: bold;">Dirección de Entrega:</label>
+                <input type="text" id="direccion-cliente" placeholder="Barrio o referencia">
             </div>
-
             <div style="margin-bottom: 10px;">
-                <label for="metodo-pago" style="display: block; font-size: 14px; margin-bottom: 5px; font-weight: bold;">Método de Pago:</label>
-                <select id="metodo-pago" style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px; background: white; color: #333;">
+                <label style="display: block; font-size: 12px; margin-bottom: 3px; font-weight: bold;">Método de Pago:</label>
+                <select id="metodo-pago">
                     <option value="Efectivo">Efectivo</option>
                     <option value="Transferencia bancaria">Transferencia bancaria</option>
                     <option value="Tarjeta">Tarjeta</option>
                 </select>
             </div>
-
-            <p><strong>Total: <span id="simbolo-moneda-total">$</span><span id="total-carrito">0.00</span></strong></p>
+            <p style="font-size: 15px; margin: 15px 0;"><strong>Total: <span id="simbolo-moneda-total">$</span><span id="total-carrito">0.00</span></strong></p>
             <button id="finalizar-compra">Finalizar Compra</button>
             <button id="vaciar-carrito">Vaciar Carrito</button>
         </aside>
     </main>
 
-    <!-- MODAL DE CONFIRMACIÓN DE PEDIDO -->
+    <!-- MODAL DE CONFIRMACIÓN -->
     <div id="modal-confirmacion" class="modal-overlay">
         <div class="modal-content">
-            <h3>¡Resumen de tu Pedido! 🛒</h3>
-            <p style="font-size: 13px; color: #555; margin-bottom: 5px;">Revisa los datos antes de enviar:</p>
+            <h3 style="margin-top: 0; color: var(--primary);">¡Resumen de tu Pedido! 🛒</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 5px;">Revisa los datos antes de enviar:</p>
             <div id="contenido-modal-resumen" class="modal-resumen"></div>
             <div class="modal-botones">
                 <button id="confirmar-enviar-whatsapp" class="btn-whatsapp-modal">💬 Enviar a WhatsApp</button>
-                <button id="cerrar-modal" class="btn-cerrar-modal">Revisar algo más</button>
+                <button id="cerrar-modal" class="btn-cerrar-modal">Revisar</button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE VISTA RÁPIDA DE PRODUCTOS -->
+    <!-- MODAL DE VISTA RÁPIDA -->
     <div id="modal-detalle" class="modal-overlay">
         <div class="modal-content" style="text-align: center;">
             <img id="detalle-img" src="" alt="Producto" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
             <h3 id="detalle-titulo" style="margin-bottom: 5px;"></h3>
-            <p id="detalle-precio" style="font-size: 18px; font-weight: bold; color: #2563eb; margin-bottom: 10px;"></p>
-            <p id="detalle-stock" style="font-size: 13px; margin-bottom: 15px;"></p>
-            <p style="font-size: 13px; color: #666; line-height: 1.4; margin-bottom: 20px;">
-                Producto de alta calidad seleccionado especialmente para ti en Variedades Reyna. Garantía de satisfacción y entrega rápida hasta la puerta de tu hogar.
-            </p>
+            <p id="detalle-precio" style="font-size: 18px; font-weight: bold; color: var(--primary); margin-bottom: 10px;"></p>
+            <p id="detalle-stock" style="font-size: 13px; margin-bottom: 15px; color: var(--text-muted);"></p>
             <div class="modal-botones">
-                <button id="cerrar-modal-detalle" class="btn-cerrar-modal">Cerrar</button>
+                <button id="cerrar-modal-detalle" class="btn-cerrar-modal" style="width: 100%;">Cerrar</button>
             </div>
         </div>
     </div>
@@ -581,7 +826,7 @@
         <div class="footer-container">
             <div class="footer-section">
                 <h3>Variedades Reyna</h3>
-                <p>Tu tienda de confianza para encontrar ropa, calzado, accesorios y detalles florales de la más alta calidad con entrega rápida.</p>
+                <p>Tu tienda de confianza para encontrar ropa, calzado, accesorios y detalles florales.</p>
             </div>
             <div class="footer-section">
                 <h3>Garantías</h3>
@@ -608,18 +853,16 @@
     const contadorCarrito = document.getElementById('contador-carrito');
     const botonVaciar = document.getElementById('vaciar-carrito');
     const botonFinalizar = document.getElementById('finalizar-compra');
-    const inputBuscador = document.getElementById('buscador');
-    const contenedorSubcategorias = document.getElementById('contenedor-subcategorias');
-    const selectMoneda = document.getElementById('moneda-pago');
-    
+    const selectMoneda = document.getElementById('moneda-pago');    
     const modalConfirmacion = document.getElementById('modal-confirmacion');
     const contenidoModalResumen = document.getElementById('contenido-modal-resumen');
     const botonConfirmarWhatsApp = document.getElementById('confirmar-enviar-whatsapp');
     const botonCerrarModal = document.getElementById('cerrar-modal');
-
+    const inputBuscador = document.getElementById('input-buscador');
+    
     let articulosCarrito = JSON.parse(localStorage.getItem('VariedadesReynaCarrito')) || [];
     let urlWhatsAppFinal = "";
-    let idsFavoritos = [];
+    let nivelActual = 1;
 
     document.addEventListener("DOMContentLoaded", () => {
         actualizarVistaStockYCarrito();
@@ -629,48 +872,154 @@
         actualizarVistaStockYCarrito();
     });
 
-    document.addEventListener('click', (e) => {
-        if (e.target && e.target.classList.contains('btn-favorito')) {
-            const id = e.target.getAttribute('data-id');
-            if (idsFavoritos.includes(id)) {
-                idsFavoritos = idsFavoritos.filter(favId => favId !== id);
-                e.target.innerHTML = '&#x2661;';
-                e.target.classList.remove('activo');
-            } else {
-                idsFavoritos.push(id);
-                e.target.innerHTML = '&#x2764;';
-                e.target.classList.add('activo');
-            }
-            const botonActivo = document.querySelector('.filtro-btn.activo');
-            if (botonActivo && botonActivo.getAttribute('data-categoria') === 'favoritos') {
-                filtrarProductos();
-            }
+    /* FILTRADO EN TIEMPO REAL */
+    inputBuscador.addEventListener('input', (e) => {
+        const termino = e.target.value.toLowerCase().trim();
+        if (termino.length > 0) {
+            document.getElementById('vista-nivel-1').style.display = 'none';
+            document.getElementById('vista-nivel-2-ropa').style.display = 'none';
+            document.getElementById('vista-nivel-3-sub').style.display = 'none';
+            document.getElementById('banner-principal-home').style.display = 'none';
+            document.getElementById('vista-nivel-4-productos').style.display = 'grid';
+
+            const productos = document.querySelectorAll('.producto');
+            productos.forEach(prod => {
+                const nombre = prod.getAttribute('data-nombre').toLowerCase();
+                prod.style.display = nombre.includes(termino) ? 'flex' : 'none';
+            });
+        } else {
+            regresarANivel1();
         }
     });
 
+    /* NAVEGACIÓN NIVEL 2: ROPA */
+    function irANivel2Ropa() {
+        document.getElementById('vista-nivel-1').style.display = 'none';
+        document.getElementById('vista-nivel-2-ropa').style.display = 'flex';
+        document.getElementById('vista-nivel-3-sub').style.display = 'none';
+        document.getElementById('vista-nivel-4-productos').style.display = 'none';        
+        document.getElementById('banner-principal-home').style.display = 'none';
+        nivelActual = 2;
+    }
+
+    /* NAVEGACIÓN NIVEL 3: DAMA, CABALLERO, POR ESTILO */
+    function irANivel3Sub(tipo) {
+        document.getElementById('vista-nivel-1').style.display = 'none';
+        document.getElementById('vista-nivel-2-ropa').style.display = 'none';
+        
+        const vistaNivel3 = document.getElementById('vista-nivel-3-sub');
+        vistaNivel3.style.display = 'block';
+        
+        document.getElementById('vista-nivel-4-productos').style.display = 'none';
+        document.getElementById('banner-principal-home').style.display = 'none';
+        nivelActual = 3;
+
+        const contenedorSub = document.getElementById('contenedor-subtipos');
+        contenedorSub.style.display = 'grid';
+        contenedorSub.innerHTML = '';
+        let htmlSubtipos = '';
+
+        if (tipo === 'dama') {
+            htmlSubtipos = `
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('dama-blusas')"><img src="https://images.unsplash.com/photo-1564257577519-74d754e0b04a?w=300&auto=format&fit=crop&q=80" alt="Blusas"><div class="badge-cat-icon">👚</div><h3>Blusas</h3><p>Estilo y comodidad</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('dama-camisas')"><img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=300&auto=format&fit=crop&q=80" alt="Camisas"><div class="badge-cat-icon">👔</div><h3>Camisas</h3><p>Diseños elegantes</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('dama-pantalones')"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&auto=format&fit=crop&q=80" alt="Pantalones"><div class="badge-cat-icon">👖</div><h3>Pantalones</h3><p>Corte perfecto</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('dama-jeans')"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=300&auto=format&fit=crop&q=80" alt="Jeans"><div class="badge-cat-icon">👖</div><h3>Jeans</h3><p>Tendencia actual</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('dama-shorts')"><img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=300&auto=format&fit=crop&q=80" alt="Shorts"><div class="badge-cat-icon">🩳</div><h3>Shorts</h3><p>Ideales para verano</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('dama-deportiva')"><img src="https://images.unsplash.com/photo-1506152983158-b4a74a01c721?w=300&auto=format&fit=crop&q=80" alt="Deportiva"><div class="badge-cat-icon">🏃‍♀️</div><h3>Ropa Deportiva</h3><p>Máximo confort</p><button class="btn-ver-cat">Ver productos →</button></div>
+            `;
+        } else if (tipo === 'caballero') {
+            htmlSubtipos = `
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('caballero-camisas')"><img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=300&auto=format&fit=crop&q=80" alt="Camisas"><div class="badge-cat-icon">👔</div><h3>Camisas</h3><p>Formales y casuales</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('caballero-camisetas')"><img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=300&auto=format&fit=crop&q=80" alt="Camisetas"><div class="badge-cat-icon">👕</div><h3>Camisetas</h3><p>Básicas de algodón</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('caballero-polos')"><img src="https://images.unsplash.com/photo-1625910513418-502334d0282c?w=300&auto=format&fit=crop&q=80" alt="Polos"><div class="badge-cat-icon">👕</div><h3>Polos</h3><p>Estilo clásico</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('caballero-pantalones')"><img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=300&auto=format&fit=crop&q=80" alt="Pantalones"><div class="badge-cat-icon">👖</div><h3>Pantalones</h3><p>Vestir y casual</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('caballero-jeans')"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=300&auto=format&fit=crop&q=80" alt="Jeans"><div class="badge-cat-icon">👖</div><h3>Jeans</h3><p>Resistentes y modernos</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('caballero-shorts')"><img src="https://images.unsplash.com/photo-1565084888279-aca607ec8c0a?w=300&auto=format&fit=crop&q=80" alt="Shorts"><div class="badge-cat-icon">🩳</div><h3>Shorts</h3><p>Estilo playero</p><button class="btn-ver-cat">Ver productos →</button></div>
+            `;
+        } else if (tipo === 'estilo') {
+            htmlSubtipos = `
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('estilo-casual')"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&auto=format&fit=crop&q=80" alt="Casual"><div class="badge-cat-icon">🕶️</div><h3>Casual</h3><p>Urbano y relajado</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('estilo-formal')"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=300&auto=format&fit=crop&q=80" alt="Formal"><div class="badge-cat-icon">✨</div><h3>Formal</h3><p>Distinción y elegancia</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('estilo-deportivo')"><img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=300&auto=format&fit=crop&q=80" alt="Deportivo"><div class="badge-cat-icon">⚡</div><h3>Deportivo</h3><p>Libertad de movimiento</p><button class="btn-ver-cat">Ver productos →</button></div>
+                <div class="tarjeta-categoria" onclick="mostrarProductosPorSub('estilo-fiesta')"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&auto=format&fit=crop&q=80" alt="Fiesta"><div class="badge-cat-icon">🎉</div><h3>Fiestas</h3><p>Brilla en cada evento</p><button class="btn-ver-cat">Ver productos →</button></div>
+            `;
+        }
+        contenedorSub.innerHTML = htmlSubtipos;
+    }
+
+    /* NAVEGACIÓN NIVEL 4: FILTRADO DE PRODUCTOS */
+    function mostrarProductosPorSub(subcategoria) {
+        document.getElementById('vista-nivel-2-ropa').style.display = 'none';
+        document.getElementById('vista-nivel-3-sub').style.display = 'none';
+        document.getElementById('vista-nivel-4-productos').style.display = 'grid';
+        nivelActual = 4;
+        
+        const productos = document.querySelectorAll('.producto');
+        productos.forEach(prod => {
+            prod.style.display = prod.getAttribute('data-sub') === subcategoria ? 'flex' : 'none';
+        });
+    }
+
+    function mostrarProductosDirectos(categoria) {
+        document.getElementById('vista-nivel-1').style.display = 'none';
+        document.getElementById('vista-nivel-2-ropa').style.display = 'none';
+        document.getElementById('vista-nivel-3-sub').style.display = 'none';
+        document.getElementById('vista-nivel-4-productos').style.display = 'grid';        
+        document.getElementById('banner-principal-home').style.display = 'none';
+        nivelActual = 1.5;
+
+        const productos = document.querySelectorAll('.producto');
+        productos.forEach(prod => {
+            prod.style.display = prod.getAttribute('data-categoria') === categoria ? 'flex' : 'none';
+        });
+    }
+
+    /* FUNCIONES DE RETORNO */
+    function regresarANivel1() {
+        inputBuscador.value = '';
+        document.getElementById('vista-nivel-2-ropa').style.display = 'none';
+        document.getElementById('vista-nivel-3-sub').style.display = 'none';
+        document.getElementById('vista-nivel-4-productos').style.display = 'none';
+        document.getElementById('vista-nivel-1').style.display = 'grid';        
+        document.getElementById('banner-principal-home').style.display = 'flex';
+        nivelActual = 1;
+    }
+
+    function regresarANivel2Ropa() {
+        document.getElementById('vista-nivel-3-sub').style.display = 'none';
+        document.getElementById('vista-nivel-4-productos').style.display = 'none';
+        document.getElementById('vista-nivel-2-ropa').style.display = 'flex';       
+        nivelActual = 2;
+    }
+
+    function regresarANivel3Sub() {
+        document.getElementById('vista-nivel-4-productos').style.display = 'none';
+        if (nivelActual === 4) {
+            document.getElementById('vista-nivel-3-sub').style.display = 'block';
+            nivelActual = 3;
+        } else {
+            regresarANivel2Ropa();
+        }
+    }
+
+    /* LÓGICA DEL CARRITO */
     const botonesAgregar = document.querySelectorAll('.agregar-carrito');
     botonesAgregar.forEach(boton => {
         boton.addEventListener('click', (e) => {
             const productoHTML = e.target.closest('.producto');
             const id = productoHTML.getAttribute('data-id');
             const stockMaximo = parseInt(productoHTML.getAttribute('data-stock'));
-
-            // Capturar la talla o número seleccionado si el producto lo tiene
             const selectTalla = productoHTML.querySelector('.select-talla');
             const tallaSeleccionada = selectTalla ? selectTalla.value : 'Única';
-
-            // Creamos un identificador único combinando ID y Talla 
-            // (para que si compra una camisa M y una L, se guarden por separado en el carrito)
             const idUnico = id + '-' + tallaSeleccionada;
-
             const productoEnCarrito = articulosCarrito.find(p => p.idUnico === idUnico);
             const cantidadActualEnCarrito = productoEnCarrito ? productoEnCarrito.cantidad : 0;
-
+            
             if (cantidadActualEnCarrito >= stockMaximo) {
-                alert('¡Lo sentimos! Has alcanzado el límite de stock disponible para esta talla.');
+                alert('¡Lo sentimos! Has alcanzado el límite de stock disponible.');
                 return;
             }
-
             const infoProducto = {
                 idUnico: idUnico,
                 id: id,
@@ -679,49 +1028,35 @@
                 talla: tallaSeleccionada,
                 cantidad: 1
             };
-
             if (productoEnCarrito) {
                 productoEnCarrito.cantidad++;
             } else {
                 articulosCarrito.push(infoProducto);
             }
-
-            const carritoIcono = document.getElementById('carrito-icono');
-            carritoIcono.classList.add('animar-carrito');
-            setTimeout(() => {
-                carritoIcono.classList.remove('animar-carrito');
-            }, 400); 
-
             actualizarVistaStockYCarrito();
         });
     });
 
     document.addEventListener('click', (e) => {
         if (e.target && e.target.classList.contains('sumar-cantidad')) {
-            const id = e.target.getAttribute('data-id');
-            const productoHTML = document.querySelector(`.producto[data-id="${id}"]`);
+            const idUnicoBtn = e.target.getAttribute('data-idunico');
+            const productoEnCarrito = articulosCarrito.find(p => p.idUnico === idUnicoBtn);
+            const productoHTML = document.querySelector(`.producto[data-id="${productoEnCarrito.id}"]`);
             const stockMaximo = parseInt(productoHTML.getAttribute('data-stock'));
-            const productoEnCarrito = articulosCarrito.find(p => p.id === id);
-
             if (productoEnCarrito && productoEnCarrito.cantidad >= stockMaximo) {
-                alert('No hay más unidades disponibles de este producto en el inventario.');
+                alert('No hay más unidades disponibles.');
                 return;
             }
-
-            if (productoEnCarrito) {
-                productoEnCarrito.cantidad++;
-            }
+            if (productoEnCarrito) productoEnCarrito.cantidad++;
             actualizarVistaStockYCarrito();
         }
-
         if (e.target && e.target.classList.contains('restar-cantidad')) {
-            const id = e.target.getAttribute('data-id');
-            const productoEnCarrito = articulosCarrito.find(p => p.id === id);
-
+            const idUnicoBtn = e.target.getAttribute('data-idunico');
+            const productoEnCarrito = articulosCarrito.find(p => p.idUnico === idUnicoBtn);
             if (productoEnCarrito) {
                 productoEnCarrito.cantidad--;
                 if (productoEnCarrito.cantidad <= 0) {
-                    articulosCarrito = articulosCarrito.filter(p => p.id !== id);
+                    articulosCarrito = articulosCarrito.filter(p => p.idUnico !== idUnicoBtn);
                 }
             }
             actualizarVistaStockYCarrito();
@@ -735,43 +1070,27 @@
         document.getElementById('telefono-cliente').value = '';
         document.getElementById('direccion-cliente').value = '';
         document.getElementById('metodo-pago').selectedIndex = 0;
-        document.getElementById('moneda-pago').selectedIndex = 0;
-        inputBuscador.value = '';
-        
-        document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
-        document.querySelector('[data-categoria="todos"]').classList.add('activo');
-        document.querySelectorAll('.subfiltro-btn').forEach(b => b.classList.remove('activo-sub'));
-        document.querySelector('[data-subcategoria="todos-sub"]').classList.add('activo-sub');
-        contenedorSubcategorias.classList.remove('activo');
-
-        filtrarProductos();
+        document.getElementById('moneda-pago').selectedIndex = 0;        
+        regresarANivel1();
         actualizarVistaStockYCarrito();
     });
 
     function generarRespuestaTienda(datosPedido, tasaCambio, esCordobas) {
         const { nombre, productos, total, direccion, metodoPago, moneda, simbolo } = datosPedido;
-
         const listaProductosText = productos.map(item => {
-            let precioUnitarioDolar = item.precio;
             let subtotalDolar = item.precio * item.cantidad;
+            let textoTalla = item.talla !== 'Única' ? ` (Talla/N°: ${item.talla})` : '';
             if (esCordobas) {
-                let precioUnitarioCordoba = precioUnitarioDolar * tasaCambio;
-                let subtotalCordoba = subtotalDolar * tasaCambio;
-                return `• ${item.cantidad}x${item.nombre} (C$${precioUnitarioCordoba.toFixed(2)} c/u) - Subtotal: C$${subtotalCordoba.toFixed(2)}`;
+                return `• ${item.cantidad}x ${item.nombre}${textoTalla} - Subtotal: C$${(subtotalDolar * tasaCambio).toFixed(2)}`;
             } else {
-                return `• ${item.cantidad}x${item.nombre} ($${precioUnitarioDolar.toFixed(2)} c/u) - Subtotal:$${subtotalDolar.toFixed(2)} USD`;
+                return `• ${item.cantidad}x ${item.nombre}${textoTalla} - Subtotal: $${subtotalDolar.toFixed(2)} USD`;
             }
         }).join('\n');
-
         return `¡Hola, *${nombre}*! Un gusto saludarte. 😊\n\n` +
-               `Hemos recibido la información de tu pedido para *Variedades Reyna*:\n\n` +
-               `${listaProductosText}\n\n` +
+               `Pedido para *Variedades Reyna*:\n\n${listaProductosText}\n\n` +
                `*Total a pagar:* ${simbolo}${total.toFixed(2)} (${moneda})\n` +
-               (esCordobas ? `*(Tasa de cambio: $1 USD = C$${tasaCambio})*\n` : ``) +
                `*Método de pago:* ${metodoPago}\n` +
-               `*Dirección de entrega:* ${direccion}\n\n` +
-               `Tu pedido se encuentra listo para ser procesado. En breve te confirmaremos la hora exacta de entrega.\n\n` +
-               `¡Gracias por tu compra! 📦✨`;
+               `*Dirección:* ${direccion}\n\n¡Gracias por tu compra! 📦✨`;
     }
 
     botonFinalizar.addEventListener('click', () => {
@@ -779,38 +1098,21 @@
             alert('El carrito está vacío.');
             return;
         }
-
         const nombreCliente = document.getElementById('nombre-cliente').value.trim();
-        if (nombreCliente === '') {
-            alert('Por favor, escribe tu nombre antes de finalizar la compra.');
-            document.getElementById('nombre-cliente').focus();
-            return;
-        }
-
+        if (!nombreCliente) { alert('Por favor, escribe tu nombre.'); document.getElementById('nombre-cliente').focus(); return; }
         const telefonoCliente = document.getElementById('telefono-cliente').value.trim();
-        if (telefonoCliente === '') {
-            alert('Por favor, escribe tu número de WhatsApp o teléfono.');
-            document.getElementById('telefono-cliente').focus();
-            return;
-        }
-
+        if (!telefonoCliente) { alert('Por favor, escribe tu número de WhatsApp.'); document.getElementById('telefono-cliente').focus(); return; }
         const direccionCliente = document.getElementById('direccion-cliente').value.trim();
-        if (direccionCliente === '') {
-            alert('Por favor, escribe tu dirección de entrega.');
-            document.getElementById('direccion-cliente').focus();
-            return;
-        }
-
+        if (!direccionCliente) { alert('Por favor, escribe tu dirección de entrega.'); document.getElementById('direccion-cliente').focus(); return; }
+        
         const metodoPago = document.getElementById('metodo-pago').value;
         const monedaPago = document.getElementById('moneda-pago').value;
-
         let totalDolares = articulosCarrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
         const tasaCambio = 36.6243; 
-
         let esCordobas = monedaPago.includes('Córdobas');
         let totalFinal = esCordobas ? (totalDolares * tasaCambio) : totalDolares;
         let simboloMoneda = esCordobas ? 'C$' : '$';
-
+        
         const datos = {
             nombre: nombreCliente,
             telefono: telefonoCliente,
@@ -821,39 +1123,26 @@
             total: totalFinal,
             simbolo: simboloMoneda
         };
-
-        // Enviar automáticamente a Google Sheets
-        google.script.run
-            .withSuccessHandler(function(respuesta) {
-                console.log("Registrado en Sheets: ", respuesta);
-            })
-            .registrarPedidoEnHoja(datos);
-
+        
+        if (typeof google !== 'undefined' && google.script && google.script.run) {
+            google.script.run
+                .withSuccessHandler(function(respuesta) { console.log("Registrado en Sheets: ", respuesta); })
+                .registrarPedidoEnHoja(datos);
+        }
+        
         const detalleProductos = datos.productos.map(item => {
-            let precioUnitarioDolar = item.precio;
-            let subtotalDolar = item.precio * item.cantidad;
             let textoTalla = item.talla !== 'Única' ? ` (Talla/N°: ${item.talla})` : '';
-            
             if (esCordobas) {
-                let precioUnitarioCordoba = precioUnitarioDolar * tasaCambio;
-                let subtotalCordoba = subtotalDolar * tasaCambio;
-                return `• ${item.cantidad}x ${item.nombre}${textoTalla} - C$${precioUnitarioCordoba.toFixed(2)} c/u - Subtotal: C$${subtotalCordoba.toFixed(2)}`;
+                return `• ${item.cantidad}x ${item.nombre}${textoTalla} - Subtotal: C$${(item.precio * item.cantidad * tasaCambio).toFixed(2)}`;
             } else {
-                return `• ${item.cantidad}x ${item.nombre}${textoTalla} - $${precioUnitarioDolar.toFixed(2)} c/u - Subtotal: $${subtotalDolar.toFixed(2)} USD`;
+                return `• ${item.cantidad}x ${item.nombre}${textoTalla} - Subtotal: $${(item.precio * item.cantidad).toFixed(2)} USD`;
             }
         }).join('\n');
-
-        const mensajeCliente = `¡Hola! Mi nombre es *${datos.nombre}* y deseo realizar el siguiente pedido en *Variedades Reyna*:\n\n` +
-            detalleProductos +
-            `\n\n*Total a pagar: ${datos.simbolo}${datos.total.toFixed(2)} (${datos.moneda})*` +
-            (esCordobas ? `\n_(Tasa de cambio aplicada: $1 USD = C$${tasaCambio})_` : ``) +
-            `\n- WhatsApp del cliente: ${datos.telefono}` +
-            `\n- Dirección de entrega: ${datos.direccion}` +
-            `\n- Método de pago: ${datos.metodoPago}\n\n` +
-            `¡Quedo a la espera de la confirmación y el envío!`;
-
-        const numeroWhatsApp = "50584882771"; 
-        urlWhatsAppFinal = "https://wa.me/" + numeroWhatsApp + "?text=" + encodeURIComponent(mensajeCliente);
+        
+        const mensajeCliente = `¡Hola! Mi nombre es *${datos.nombre}* y deseo realizar este pedido en *Variedades Reyna*:\n\n` +
+            detalleProductos + `\n\n*Total: ${datos.simbolo}${datos.total.toFixed(2)} (${datos.moneda})*` +
+            `\n- WhatsApp: ${datos.telefono}\n- Dirección: ${datos.direccion}\n- Pago: ${datos.metodoPago}`;
+        urlWhatsAppFinal = "https://wa.me/50584882771?text=" + encodeURIComponent(mensajeCliente);
 
         contenidoModalResumen.innerText = generarRespuestaTienda(datos, tasaCambio, esCordobas);
         modalConfirmacion.style.display = 'flex';
@@ -864,160 +1153,37 @@
         modalConfirmacion.style.display = 'none';
     });
 
-    botonCerrarModal.addEventListener('click', () => {
-        modalConfirmacion.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modalConfirmacion) {
-            modalConfirmacion.style.display = 'none';
-        }
-    });
+    botonCerrarModal.addEventListener('click', () => { modalConfirmacion.style.display = 'none'; });
 
     function actualizarVistaStockYCarrito() {
         localStorage.setItem('VariedadesReynaCarrito', JSON.stringify(articulosCarrito));
-
         carrito.innerHTML = '';
         let totalDolares = 0;
         let totalProductos = 0;
         const tasaCambio = 36.6243;
         let esCordobas = selectMoneda.value.includes('Córdobas');
-
+        
         articulosCarrito.forEach(producto => {
             const li = document.createElement('li');
-            li.style.display = 'flex';
-            li.style.justifyContent = 'space-between';
-            li.style.alignItems = 'center';
-
             let precioMostrar = esCordobas ? (producto.precio * tasaCambio) : producto.precio;
             let simbolo = esCordobas ? 'C$' : '$';
-
             li.innerHTML = 
                 `<span>${producto.nombre} (${simbolo}${precioMostrar.toFixed(2)})</span>` +
                 `<div>` +
-                    `<button class="btn-cantidad restar-cantidad" data-id="${producto.id}">-</button>` +
+                    `<button class="btn-cantidad restar-cantidad" data-idunico="${producto.idUnico}">-</button>` +
                     `<span>${producto.cantidad}</span>` +
-                    `<button class="btn-cantidad sumar-cantidad" data-id="${producto.id}">+</button>` +
+                    `<button class="btn-cantidad sumar-cantidad" data-idunico="${producto.idUnico}">+</button>` +
                 `</div>`;
             carrito.appendChild(li);
-
             totalDolares += producto.precio * producto.cantidad;
             totalProductos += producto.cantidad;
         });
-
         let totalFinal = esCordobas ? (totalDolares * tasaCambio) : totalDolares;
         totalCarrito.textContent = totalFinal.toFixed(2);
         simboloMonedaTotal.textContent = esCordobas ? 'C$' : '$';
         contadorCarrito.textContent = totalProductos;
-
-        const productosHTML = document.querySelectorAll('.producto');
-        productosHTML.forEach(prod => {
-            const id = prod.getAttribute('data-id');
-            const stockMaximo = parseInt(prod.getAttribute('data-stock'));
-            const etiqueta = prod.querySelector('.etiqueta-stock');
-            const botonAgregar = prod.querySelector('.agregar-carrito');
-            const esOferta = prod.classList.contains('oferta');
-
-            const productoEnCarrito = articulosCarrito.find(p => p.id === id);
-            const cantidadComprada = productoEnCarrito ? productoEnCarrito.cantidad : 0;
-            const stockRestante = stockMaximo - cantidadComprada;
-
-            if (stockRestante <= 0) {
-                etiqueta.className = 'etiqueta-stock stock-agotado';
-                etiqueta.textContent = '❌ Agotado';
-                botonAgregar.disabled = true;
-                botonAgregar.textContent = 'Agotado';
-            } else {
-                botonAgregar.disabled = false;
-                botonAgregar.textContent = 'Agregar';
-                if (esOferta) {
-                    etiqueta.className = 'etiqueta-stock etiqueta-oferta';
-                } else if (stockRestante <= 1) {
-                    etiqueta.className = 'etiqueta-stock stock-limitado';
-                    etiqueta.textContent = '🔥 ¡Última unidad! (1)';
-                } else {
-                    etiqueta.className = 'etiqueta-stock stock-disponible';
-                    etiqueta.textContent = `🟢 En Stock (${stockRestante})`;
-                }
-            }
-        });
     }
 
-    function filtrarProductos() {
-        const botonActivo = document.querySelector('.filtro-btn.activo');
-        const categoria = botonActivo ? botonActivo.getAttribute('data-categoria') : 'todos';
-        
-        const subBotonActivo = document.querySelector('.subfiltro-btn.activo-sub');
-        const subcategoria = subBotonActivo ? subBotonActivo.getAttribute('data-subcategoria') : 'todos-sub';
-
-        const textoBusqueda = inputBuscador.value.toLowerCase().trim();
-        const productos = document.querySelectorAll('.producto');
-
-        productos.forEach(producto => {
-            const idProducto = producto.getAttribute('data-id');
-            const catProducto = producto.getAttribute('data-categoria');
-            const subCatProducto = producto.getAttribute('data-subcategoria');
-            const nombreProducto = producto.getAttribute('data-nombre').toLowerCase();
-            const esOferta = producto.classList.contains('oferta');
-
-            let coincideCategoria = false;
-            if (categoria === 'todos') {
-                coincideCategoria = true;
-            } else if (categoria === 'ofertas') {
-                coincideCategoria = esOferta;
-            } else if (categoria === 'favoritos') {
-                coincideCategoria = idsFavoritos.includes(idProducto);
-            } else {
-                coincideCategoria = (catProducto === categoria);
-            }
-
-            let coincideSubcategoria = true;
-            if (categoria === 'perfumes' && subcategoria !== 'todos-sub') {
-                coincideSubcategoria = (subCatProducto === subcategoria);
-            }
-
-            const coincideBusqueda = nombreProducto.includes(textoBusqueda);
-
-            if (coincideCategoria && coincideSubcategoria && coincideBusqueda) {
-                producto.style.display = 'flex';
-            } else {
-                producto.style.display = 'none';
-            }
-        });
-    }
-
-    const botonesFiltro = document.querySelectorAll('.categorias-filtro .filtro-btn');
-    botonesFiltro.forEach(boton => {
-        boton.addEventListener('click', (e) => {
-            botonesFiltro.forEach(b => b.classList.remove('activo'));
-            e.target.classList.add('activo');
-
-            const categoriaSeleccionada = e.target.getAttribute('data-categoria');
-
-            if (categoriaSeleccionada === 'perfumes') {
-                contenedorSubcategorias.classList.add('activo');
-            } else {
-                contenedorSubcategorias.classList.remove('activo');
-                document.querySelectorAll('.subfiltro-btn').forEach(b => b.classList.remove('activo-sub'));
-                document.querySelector('[data-subcategoria="todos-sub"]').classList.add('activo-sub');
-            }
-
-            filtrarProductos();
-        });
-    });
-
-    const botonesSubfiltro = document.querySelectorAll('.subfiltro-btn');
-    botonesSubfiltro.forEach(boton => {
-        boton.addEventListener('click', (e) => {
-            botonesSubfiltro.forEach(b => b.classList.remove('activo-sub'));
-            e.target.classList.add('activo-sub');
-            filtrarProductos();
-        });
-    });
-
-    inputBuscador.addEventListener('keyup', filtrarProductos);
-
-    // Lógica del Modal de Vista Rápida
     const modalDetalle = document.getElementById('modal-detalle');
     const detalleImg = document.getElementById('detalle-img');
     const detalleTitulo = document.getElementById('detalle-titulo');
@@ -1032,31 +1198,20 @@
             const precio = productoHTML.getAttribute('data-precio');
             const stock = productoHTML.getAttribute('data-stock');
             const imagenSrc = e.target.getAttribute('src');
-
             let esCordobas = selectMoneda.value.includes('Córdobas');
             const tasaCambio = 36.6243;
             let precioMostrar = esCordobas ? (parseFloat(precio) * tasaCambio) : parseFloat(precio);
             let simbolo = esCordobas ? 'C$' : '$';
-            let monedaTexto = esCordobas ? 'NIO' : 'USD';
-
+            
             detalleImg.src = imagenSrc;
             detalleTitulo.textContent = nombre;
-            detallePrecio.textContent = `${simbolo}${precioMostrar.toFixed(2)} ${monedaTexto}`;
-            detalleStock.textContent = `Unidades disponibles en inventario: ${stock}`;
-
+            detallePrecio.textContent = `${simbolo}${precioMostrar.toFixed(2)}`;
+            detalleStock.textContent = `Unidades disponibles: ${stock}`;
             modalDetalle.style.display = 'flex';
         }
     });
 
-    botonCerrarDetalle.addEventListener('click', () => {
-        modalDetalle.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === modalDetalle) {
-            modalDetalle.style.display = 'none';
-        }
-    });
+    botonCerrarDetalle.addEventListener('click', () => { modalDetalle.style.display = 'none'; });
     </script>
 </body>
 </html>
